@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchParent"
+    tools:context=".MainActivity">
+
+    <!-- Main background -->
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/background"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg" />
+
+    <!-- Main Logo -->
+    <ImageView
+        android:id="@+id/main_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/doubleSpacing"
+        android:layout_marginRight="@dimen/doubleSpacing"
+        android:layout_marginTop="@dimen/doubleSpacing"
+        android:contentDescription="@string/main_logo"
+        android:src="@drawable/main_logo" />
+
+    <!-- Button for continuing to first character selection -->
+    <ImageButton
+        android:id="@+id/button_continue"
+        style="@style/ActionButton"
+        android:layout_below="@id/main_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/continue_button"
+        android:src="@drawable/selector_continue_button" />
+
+</RelativeLayout>

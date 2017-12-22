@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+
+    <color name="fighter1BarsBackgroundTint">#e6ffff</color>
+    <color name="fighter2BarsBackgroundTint">#ffe6e6</color>
+    <color name="energyBar1Tint">#009999</color>
+    <color name="specialBar1Tint">#004d4d</color>
+    <color name="energyBar2Tint">#cc0000</color>
+    <color name="specialBar2Tint">#4d0000</color>
+
+    <color name="shadowColor">#CD167dc7</color>
+    <color name="scoreShadowColor">#222222</color>
+    <color name="victoriousCharacterShadowColor">#222222</color>
+
+    <color name="arenaImageBorderColor">#BAD2D5</color>
+</resources>

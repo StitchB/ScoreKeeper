@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Score Keeper - The Avengers</string>
+    <string name="background">Main Background</string>
+    <string name="main_logo">Main Logo</string>
+    <string name="continue_button">Continue Button</string>
+    <string name="character_image">Character Image</string>
+
+    <string name="select_fighter_1">Select First Fighter:</string>
+    <string name="prev_character_button">Previous Character Button</string>
+    <string name="select_character_button">Select Fighter Button</string>
+    <string name="next_character_button">Next Character Button</string>
+
+    <string name="select_fighter_2">Select Second Fighter:</string>
+
+    <string name="select_arena">Select Arena:</string>
+    <string name="prev_arena_button">Previous Arena Button</string>
+    <string name="select_arena_button">Select Arena Button</string>
+    <string name="next_arena_button">Next Arena Button</string>
+    <string name="arena_image">Arena Image</string>
+
+    <string name="fighter_1">First Fighter</string>
+    <string name="fighter_2">Second Fighter</string>
+
+    <string name="attack_1">Attack 1</string>
+    <string name="attack_2">Attack 2</string>
+    <string name="attack_3">Attack 3</string>
+    <string name="attack_4">Special</string>
+    <string name="fight_again">Fight Again</string>
+
+    <string name="victory">Image after victory</string>
+</resources>
