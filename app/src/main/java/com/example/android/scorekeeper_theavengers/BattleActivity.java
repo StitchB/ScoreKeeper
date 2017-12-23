@@ -7,8 +7,11 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,9 +20,25 @@ import java.lang.String;
 
 import android.widget.ProgressBar;
 
+import java.util.HashMap;
 import java.util.Random;
 
-public class BattleActivity extends MainActivity {
+public class BattleActivity extends AppCompatActivity {
+
+    //Constants for maximum of 'Energy' & 'Special' Bars
+    protected static final int MAX_ENERGY = 100;
+    protected static final int MAX_SPECIAL = 80;
+
+    //Constants for minimum & maximum damage values inflicted by 'Special' attack
+    protected static final int MIN_RANDOM = 10;
+    protected static final int MAX_RANDOM = 30;
+
+    //Variables to keep first selected characters
+    private int selectedCharacter1;
+    private int selectedCharacter2;
+
+    //Variable to keep selected arena
+    private static int selectedArena;
 
     //Scores
     private int scoreFighter1 = 0;
@@ -47,12 +66,25 @@ public class BattleActivity extends MainActivity {
     private boolean specialUsedFighter1 = false;
     private boolean specialUsedFighter2 = false;
 
+    //Hashmap for keeping characters
+    protected HashMap<String, HashMap<String, String>> characters = new HashMap<String, HashMap<String, String>>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Hide action bar
+        hideActionBar();
+
         //Set 'activity_battle' as a main design file
         setContentView(R.layout.activity_battle);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            selectedCharacter1 = extras.getInt("SELECTED_CHARACTER_1");
+            selectedCharacter2 = extras.getInt("SELECTED_CHARACTER_2");
+            selectedArena = extras.getInt("SELECTED_ARENA");
+        }
 
         //Progress bar views
         energyBarFighter1 = findViewById(R.id.fighter_1_energy_bar);
@@ -195,7 +227,7 @@ public class BattleActivity extends MainActivity {
 
         //If enough points gained to activate special for an opponent of the current fighter & special wasn't used yet by that opponent
         if ((firstFighter ? specialBar2Value : specialBar1Value) >= MAX_SPECIAL &&
-            (firstFighter ? specialUsedFighter2 : specialUsedFighter1) == false) {
+            !(firstFighter ? specialUsedFighter2 : specialUsedFighter1)) {
 
             //Set value for 'Special Used' flags to true to not allow using special twice during one fight
             if (firstFighter) {
@@ -345,11 +377,66 @@ public class BattleActivity extends MainActivity {
      * Show all characters data (On Activity load)
      */
     private void showCharactersData() {
+        //Set characters data
+        setCharactersData();
+
+        //Selected character IDs
         String character1Id = String.valueOf(selectedCharacter1);
         String character2Id = String.valueOf(selectedCharacter2);
 
+        //Show data for each character
         showCharacterData(true, character1Id);
         showCharacterData(false, character2Id);
+    }
+
+    /**
+     * Set characters data
+     */
+    protected void setCharactersData() {
+        //Thor
+        HashMap<String, String> value = new HashMap<String, String>();
+        value.put("name", "Thor");
+        value.put("attack_1", "Mjolnir Hit");
+        value.put("attack_2", "Mjolnir Smash");
+        value.put("attack_3", "Might of Mjolnir");
+        value.put("attack_4", "Thunderstruck");
+        characters.put("1", value);
+
+        //Black Widow
+        value = new HashMap<String, String>();
+        value.put("name", "Black Widow");
+        value.put("attack_1", "Perfect Punch");
+        value.put("attack_2", "Unexpected Attack");
+        value.put("attack_3", "Power Sticks");
+        value.put("attack_4", "Widow's Revenge");
+        characters.put("2", value);
+
+        //Iron Man
+        value = new HashMap<String, String>();
+        value.put("name", "Iron Man");
+        value.put("attack_1", "Light Beam");
+        value.put("attack_2", "The Charge");
+        value.put("attack_3", "Jet Propelled");
+        value.put("attack_4", "Full Power");
+        characters.put("3", value);
+
+        //Hulk
+        value = new HashMap<String, String>();
+        value.put("name", "Hulk");
+        value.put("attack_1", "Strong Punch");
+        value.put("attack_2", "Angry Fists");
+        value.put("attack_3", "Monster Jump");
+        value.put("attack_4", "Hulk Smash");
+        characters.put("4", value);
+
+        //Captain America
+        value = new HashMap<String, String>();
+        value.put("name", "Captain America");
+        value.put("attack_1", "Low Strike");
+        value.put("attack_2", "Vigorous Attack");
+        value.put("attack_3", "Agressive Attitude");
+        value.put("attack_4", "Shield Throw");
+        characters.put("5", value);
     }
 
     /**
@@ -423,4 +510,14 @@ public class BattleActivity extends MainActivity {
         Random r = new Random();
         return r.nextInt((MAX_RANDOM - MIN_RANDOM) + 1) + MIN_RANDOM;
     }
+
+    /**
+     * Hide action bar
+     */
+    private void hideActionBar() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
+
 }

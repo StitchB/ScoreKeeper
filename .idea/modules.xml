@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ScoreKeeperTheAvengers.iml" filepath="$PROJECT_DIR$/ScoreKeeperTheAvengers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ScoreKeeper.iml" filepath="$PROJECT_DIR$/ScoreKeeper.iml" />
+      <module fileurl="file://C:\Users\Adrianna\AndroidStudioProjects\ScoreKeeper\ScoreKeeperTheAvengers.iml" filepath="C:\Users\Adrianna\AndroidStudioProjects\ScoreKeeper\ScoreKeeperTheAvengers.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
