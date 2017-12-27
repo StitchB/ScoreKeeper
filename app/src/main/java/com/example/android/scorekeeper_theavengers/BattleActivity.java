@@ -69,6 +69,21 @@ public class BattleActivity extends AppCompatActivity {
     //Hashmap for keeping characters
     protected HashMap<String, HashMap<String, String>> characters = new HashMap<String, HashMap<String, String>>();
 
+    //Used to keep activity state
+    static final String STATE_SELECTED_CHARACTER_1 = "selectedCharacter1";
+    static final String STATE_SELECTED_CHARACTER_2 = "selectedCharacter2";
+    static final String STATE_SELECTED_ARENA = "selectedArena";
+    static final String STATE_SCORE_FIGHTER_1 = "scoreFighter1";
+    static final String STATE_SCORE_FIGHTER_2 = "scoreFighter2";
+    static final String STATE_LAST_ATTACK_NO_CHARACTER_1 = "lastAttackNoCharacter1";
+    static final String STATE_LAST_ATTACK_NO_CHARACTER_2 = "lastAttackNoCharacter2";
+    static final String STATE_ENERGY_BAR_1_VALUE = "energyBar1Value";
+    static final String STATE_ENERGY_BAR_2_VALUE = "energyBar2Value";
+    static final String STATE_SPECIAL_BAR_1_VALUE = "specialBar1Value";
+    static final String STATE_SPECIAL_BAR_2_VALUE = "specialBar2Value";
+    static final String STATE_SPECIAL_USED_FIGHTER_1 = "specialUsedFighter1";
+    static final String STATE_SPECIAL_USED_FIGHTER_2 = "specialUsedFighter2";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,6 +154,57 @@ public class BattleActivity extends AppCompatActivity {
 
         //Show correct characters data
         showCharactersData();
+    }
+
+    /**
+     * Save instance state
+     *
+     * @param savedInstanceState
+     */
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        //Save the state
+        savedInstanceState.putInt(STATE_SELECTED_CHARACTER_1, selectedCharacter1);
+        savedInstanceState.putInt(STATE_SELECTED_CHARACTER_2, selectedCharacter2);
+        savedInstanceState.putInt(STATE_SELECTED_ARENA, selectedArena);
+        savedInstanceState.putInt(STATE_SCORE_FIGHTER_1, scoreFighter1);
+        savedInstanceState.putInt(STATE_SCORE_FIGHTER_2, scoreFighter2);
+        savedInstanceState.putInt(STATE_LAST_ATTACK_NO_CHARACTER_1, lastAttackNoCharacter1);
+        savedInstanceState.putInt(STATE_LAST_ATTACK_NO_CHARACTER_2, lastAttackNoCharacter2);
+        savedInstanceState.putInt(STATE_ENERGY_BAR_1_VALUE, energyBar1Value);
+        savedInstanceState.putInt(STATE_ENERGY_BAR_2_VALUE, energyBar2Value);
+        savedInstanceState.putInt(STATE_SPECIAL_BAR_1_VALUE, specialBar1Value);
+        savedInstanceState.putInt(STATE_SPECIAL_BAR_2_VALUE, specialBar2Value);
+        savedInstanceState.putBoolean(STATE_SPECIAL_USED_FIGHTER_1, specialUsedFighter1);
+        savedInstanceState.putBoolean(STATE_SPECIAL_USED_FIGHTER_2, specialUsedFighter2);
+
+        //Call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    /**
+     * Restore instance state
+     *
+     * @param savedInstanceState
+     */
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        //Call the superclass so it can restore the view hierarchy
+        super.onRestoreInstanceState(savedInstanceState);
+
+        //Restore the state from saved instance
+        selectedCharacter1 = savedInstanceState.getInt(STATE_SELECTED_CHARACTER_1);
+        selectedCharacter2 = savedInstanceState.getInt(STATE_SELECTED_CHARACTER_2);
+        selectedArena = savedInstanceState.getInt(STATE_SELECTED_ARENA);
+        scoreFighter1 = savedInstanceState.getInt(STATE_SCORE_FIGHTER_1);
+        scoreFighter2 = savedInstanceState.getInt(STATE_SCORE_FIGHTER_2);
+        lastAttackNoCharacter1 = savedInstanceState.getInt(STATE_LAST_ATTACK_NO_CHARACTER_1);
+        lastAttackNoCharacter2 = savedInstanceState.getInt(STATE_LAST_ATTACK_NO_CHARACTER_2);
+        energyBar1Value = savedInstanceState.getInt(STATE_ENERGY_BAR_1_VALUE);
+        energyBar2Value = savedInstanceState.getInt(STATE_ENERGY_BAR_2_VALUE);
+        specialBar1Value = savedInstanceState.getInt(STATE_SPECIAL_BAR_1_VALUE);
+        specialBar2Value = savedInstanceState.getInt(STATE_SPECIAL_BAR_2_VALUE);
+        specialUsedFighter1 = savedInstanceState.getBoolean(STATE_SPECIAL_USED_FIGHTER_1);
+        specialUsedFighter2 = savedInstanceState.getBoolean(STATE_SPECIAL_USED_FIGHTER_2);
     }
 
     /**

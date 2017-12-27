@@ -23,6 +23,11 @@ public class SelectSecondCharacterActivity extends AppCompatActivity {
     //Variable to keep second selected character
     private int selectedCharacter2;
 
+    //Used to keep activity state
+    static final String STATE_LAST_CHARACTER_COUNTER = "lastCharacterCounter";
+    static final String STATE_SELECTED_CHARACTER_1 = "selectedCharacter1";
+    static final String STATE_SELECTED_CHARACTER_2 = "selectedCharacter2";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +78,37 @@ public class SelectSecondCharacterActivity extends AppCompatActivity {
             selectCharacter();
             }
         });
+    }
+
+    /**
+     * Save instance state
+     *
+     * @param savedInstanceState
+     */
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        //Save the state
+        savedInstanceState.putInt(STATE_LAST_CHARACTER_COUNTER, lastCharacterCounter);
+        savedInstanceState.putInt(STATE_SELECTED_CHARACTER_1, selectedCharacter1);
+        savedInstanceState.putInt(STATE_SELECTED_CHARACTER_2, selectedCharacter2);
+
+        //Call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    /**
+     * Restore instance state
+     *
+     * @param savedInstanceState
+     */
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        //Call the superclass so it can restore the view hierarchy
+        super.onRestoreInstanceState(savedInstanceState);
+
+        //Restore the state from saved instance
+        lastCharacterCounter = savedInstanceState.getInt(STATE_LAST_CHARACTER_COUNTER);
+        selectedCharacter1 = savedInstanceState.getInt(STATE_SELECTED_CHARACTER_1);
+        selectedCharacter2 = savedInstanceState.getInt(STATE_SELECTED_CHARACTER_2);
     }
 
     /**

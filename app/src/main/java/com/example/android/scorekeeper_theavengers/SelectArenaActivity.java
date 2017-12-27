@@ -14,12 +14,17 @@ import android.widget.ImageView;
 
 public class SelectArenaActivity extends AppCompatActivity {
 
+    //Counter for the last selected arena (on arena selection)
+    private int lastArenaCounter = 1;
+
     //Variables to keep first selected characters
     private int selectedCharacter1;
     private int selectedCharacter2;
 
-    //Counter for the last selected arena (on arena selection)
-    private int lastArenaCounter = 1;
+    //Used to keep activity state
+    static final String STATE_LAST_ARENA_COUNTER = "lastArenaCounter";
+    static final String STATE_SELECTED_CHARACTER_1 = "selectedCharacter1";
+    static final String STATE_SELECTED_CHARACTER_2 = "selectedCharacter2";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +68,37 @@ public class SelectArenaActivity extends AppCompatActivity {
             selectArena();
             }
         });
+    }
+
+    /**
+     * Save instance state
+     *
+     * @param savedInstanceState
+     */
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        //Save the state
+        savedInstanceState.putInt(STATE_LAST_ARENA_COUNTER, lastArenaCounter);
+        savedInstanceState.putInt(STATE_SELECTED_CHARACTER_1, selectedCharacter1);
+        savedInstanceState.putInt(STATE_SELECTED_CHARACTER_2, selectedCharacter2);
+
+        //Call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    /**
+     * Restore instance state
+     *
+     * @param savedInstanceState
+     */
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        //Call the superclass so it can restore the view hierarchy
+        super.onRestoreInstanceState(savedInstanceState);
+
+        //Restore the state from saved instance
+        lastArenaCounter = savedInstanceState.getInt(STATE_LAST_ARENA_COUNTER);
+        selectedCharacter1 = savedInstanceState.getInt(STATE_SELECTED_CHARACTER_1);
+        selectedCharacter2 = savedInstanceState.getInt(STATE_SELECTED_CHARACTER_2);
     }
 
     /**
