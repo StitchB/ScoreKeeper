@@ -11,15 +11,15 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.view.View.OnClickListener;
 
-public class SelectArenaActivity extends AppCompatActivity {
+public class SelectArenaActivity extends AppCompatActivity implements OnClickListener {
 
     //Counter for the last selected arena (on arena selection)
     private int lastArenaCounter = 1;
 
     //Variables to keep first selected characters
-    private int selectedCharacter1;
-    private int selectedCharacter2;
+    private int selectedCharacter1, selectedCharacter2;
 
     //Used to keep activity state
     static final String STATE_LAST_ARENA_COUNTER = "lastArenaCounter";
@@ -28,6 +28,9 @@ public class SelectArenaActivity extends AppCompatActivity {
 
     //Arena image view
     ImageView arena_image;
+
+    //Image buttons
+    ImageButton buttonPrev, buttonNext, buttonSelect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,32 +49,15 @@ public class SelectArenaActivity extends AppCompatActivity {
             selectedCharacter2 = extras.getInt("SELECTED_CHARACTER_2");
         }
 
-        //Add on click listener event for the 'Previous Arena' button
+        //Image buttons
         ImageButton buttonPrev = findViewById(R.id.button_prev);
-        buttonPrev.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            //Start arena transition
-            startArenaTransition(true);
-            }
-        });
-
-        //Add on click listener event for the 'Next Arena' button
         ImageButton buttonNext = findViewById(R.id.button_next);
-        buttonNext.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            //Start arena transition
-            startArenaTransition(false);
-            }
-        });
-
-        //Add on click listener event for the 'Select Arena' button
         ImageButton buttonSelect = findViewById(R.id.button_select);
-        buttonSelect.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            //Select arena
-            selectArena();
-            }
-        });
+
+        //Set on click listener events for buttons
+        buttonPrev.setOnClickListener(this);
+        buttonNext.setOnClickListener(this);
+        buttonSelect.setOnClickListener(this);
 
         //Arena image view
         arena_image = findViewById(R.id.arena_image);
@@ -110,6 +96,25 @@ public class SelectArenaActivity extends AppCompatActivity {
         //Show correct arena image
         int arenaId = getResources().getIdentifier("arena_" + lastArenaCounter + "_small", "drawable", getPackageName());
         arena_image.setImageResource(arenaId);
+    }
+
+    @Override
+    public void onClick(View v) {
+        //Perform on click action
+        switch(v.getId()) {
+            case R.id.button_prev:
+                //Start arena transition
+                startArenaTransition(true);
+                break;
+            case R.id.button_next:
+                //Start arena transition
+                startArenaTransition(false);
+                break;
+            case R.id.button_select:
+                //Select arena
+                selectArena();
+                break;
+        }
     }
 
     /**

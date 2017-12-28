@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.LinearInterpolator;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,8 +35,7 @@ public class BattleActivity extends AppCompatActivity {
     protected static final int MAX_RANDOM = 30;
 
     //Variables to keep first selected characters
-    private int selectedCharacter1;
-    private int selectedCharacter2;
+    private int selectedCharacter1, selectedCharacter2;
 
     //Variable to keep selected arena
     private static int selectedArena;
@@ -50,8 +50,8 @@ public class BattleActivity extends AppCompatActivity {
 
     //Progress bars
     private ProgressBar energyBarFighter1 = null;
-    private ProgressBar specialBarFighter1 = null;
     private ProgressBar energyBarFighter2 = null;
+    private ProgressBar specialBarFighter1 = null;
     private ProgressBar specialBarFighter2 = null;
 
     //'Energy' bars values (Set to maximum)
@@ -84,19 +84,12 @@ public class BattleActivity extends AppCompatActivity {
     static final String STATE_SPECIAL_USED_FIGHTER_1 = "specialUsedFighter1";
     static final String STATE_SPECIAL_USED_FIGHTER_2 = "specialUsedFighter2";
 
-    //Attack text views
-    public TextView fighter1Attack1View;
-    public TextView fighter1Attack2View;
-    public TextView fighter1Attack3View;
-    public TextView fighter1Attack4View;
-    public TextView fighter2Attack1View;
-    public TextView fighter2Attack2View;
-    public TextView fighter2Attack3View;
-    public TextView fighter2Attack4View;
+    //Attack button views
+    public Button fighter1Attack1View, fighter1Attack2View, fighter1Attack3View, fighter1Attack4View,
+                  fighter2Attack1View, fighter2Attack2View, fighter2Attack3View, fighter2Attack4View;
 
     //Score text views
-    public TextView fighter1ScoreView;
-    public TextView fighter2ScoreView;
+    public TextView fighter1ScoreView, fighter2ScoreView;
 
     //Victory card view
     public CardView victoryView;
@@ -104,12 +97,10 @@ public class BattleActivity extends AppCompatActivity {
     public ImageView victoryImageView;
 
     //Fighter names
-    public TextView fighter1NameView;
-    public TextView fighter2NameView;
+    public TextView fighter1NameView, fighter2NameView;
 
     //Fighter images
-    public ImageView fighter1Image;
-    public ImageView fighter2Image;
+    public ImageView fighter1Image, fighter2Image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,7 +112,7 @@ public class BattleActivity extends AppCompatActivity {
         //Set 'activity_battle' as a main design file
         setContentView(R.layout.activity_battle);
 
-        //Attack text views
+        //Attack button views
         fighter1Attack1View = findViewById(R.id.fighter_1_attack_1);
         fighter1Attack2View = findViewById(R.id.fighter_1_attack_2);
         fighter1Attack3View = findViewById(R.id.fighter_1_attack_3);

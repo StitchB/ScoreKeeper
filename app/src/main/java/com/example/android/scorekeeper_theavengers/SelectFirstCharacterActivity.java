@@ -11,8 +11,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.view.View.OnClickListener;
 
-public class SelectFirstCharacterActivity extends AppCompatActivity {
+public class SelectFirstCharacterActivity extends AppCompatActivity implements OnClickListener {
 
     //Counter for the last selected character (on character selection)
     private int lastCharacterCounter = 1;
@@ -27,6 +28,9 @@ public class SelectFirstCharacterActivity extends AppCompatActivity {
     //Character image view
     ImageView character_image;
 
+    //Image buttons
+    ImageButton buttonPrev, buttonNext, buttonSelect;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,32 +41,15 @@ public class SelectFirstCharacterActivity extends AppCompatActivity {
         //Set 'activity_select_first_character' as a main design file
         setContentView(R.layout.activity_select_first_character);
 
-        //Add on click listener event for the 'Previous Character' button
+        //Image buttons
         ImageButton buttonPrev = findViewById(R.id.button_prev);
-        buttonPrev.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            //Start character transition
-            startCharacterTransition(true);
-            }
-        });
-
-        //Add on click listener event for the 'Next Character' button
         ImageButton buttonNext = findViewById(R.id.button_next);
-        buttonNext.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            //Start character transition
-            startCharacterTransition(false);
-            }
-        });
-
-        //Add on click listener event for the 'Select Character' button
         ImageButton buttonSelect = findViewById(R.id.button_select);
-        buttonSelect.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            //Select character
-            selectCharacter();
-            }
-        });
+
+        //Set on click listener events for buttons
+        buttonPrev.setOnClickListener(this);
+        buttonNext.setOnClickListener(this);
+        buttonSelect.setOnClickListener(this);
 
         //Character image view
         character_image = findViewById(R.id.character_image);
@@ -99,6 +86,25 @@ public class SelectFirstCharacterActivity extends AppCompatActivity {
         //Show correct character image
         int characterId = getResources().getIdentifier("character_" + lastCharacterCounter, "drawable", getPackageName());
         character_image.setImageResource(characterId);
+    }
+
+    @Override
+    public void onClick(View v) {
+        //Perform on click action
+        switch(v.getId()) {
+            case R.id.button_prev:
+                //Start character transition
+                startCharacterTransition(true);
+                break;
+            case R.id.button_next:
+                //Start character transition
+                startCharacterTransition(false);
+                break;
+            case R.id.button_select:
+                //Select character
+                selectCharacter();
+                break;
+        }
     }
 
     /**
