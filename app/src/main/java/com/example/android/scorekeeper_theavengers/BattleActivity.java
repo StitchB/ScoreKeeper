@@ -258,6 +258,10 @@ public class BattleActivity extends AppCompatActivity {
         specialBar2Value = savedInstanceState.getInt(STATE_SPECIAL_BAR_2_VALUE);
         specialUsedFighter1 = savedInstanceState.getBoolean(STATE_SPECIAL_USED_FIGHTER_1);
         specialUsedFighter2 = savedInstanceState.getBoolean(STATE_SPECIAL_USED_FIGHTER_2);
+
+        //Set correct scores
+        fighter1ScoreView.setText(String.valueOf(scoreFighter1));
+        fighter2ScoreView.setText(String.valueOf(scoreFighter2));
     }
 
     /**

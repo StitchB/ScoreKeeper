@@ -106,6 +106,10 @@ public class SelectArenaActivity extends AppCompatActivity {
         lastArenaCounter = savedInstanceState.getInt(STATE_LAST_ARENA_COUNTER);
         selectedCharacter1 = savedInstanceState.getInt(STATE_SELECTED_CHARACTER_1);
         selectedCharacter2 = savedInstanceState.getInt(STATE_SELECTED_CHARACTER_2);
+
+        //Show correct arena image
+        int arenaId = getResources().getIdentifier("arena_" + lastArenaCounter + "_small", "drawable", getPackageName());
+        arena_image.setImageResource(arenaId);
     }
 
     /**

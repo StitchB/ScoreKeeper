@@ -95,6 +95,10 @@ public class SelectFirstCharacterActivity extends AppCompatActivity {
         //Restore the state from saved instance
         lastCharacterCounter = savedInstanceState.getInt(STATE_LAST_CHARACTER_COUNTER);
         selectedCharacter1 = savedInstanceState.getInt(STATE_SELECTED_CHARACTER_1);
+
+        //Show correct character image
+        int characterId = getResources().getIdentifier("character_" + lastCharacterCounter, "drawable", getPackageName());
+        character_image.setImageResource(characterId);
     }
 
     /**

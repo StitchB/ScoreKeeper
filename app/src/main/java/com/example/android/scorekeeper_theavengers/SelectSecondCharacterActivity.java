@@ -116,6 +116,10 @@ public class SelectSecondCharacterActivity extends AppCompatActivity {
         lastCharacterCounter = savedInstanceState.getInt(STATE_LAST_CHARACTER_COUNTER);
         selectedCharacter1 = savedInstanceState.getInt(STATE_SELECTED_CHARACTER_1);
         selectedCharacter2 = savedInstanceState.getInt(STATE_SELECTED_CHARACTER_2);
+
+        //Show correct character image
+        int characterId = getResources().getIdentifier("character_" + lastCharacterCounter, "drawable", getPackageName());
+        character_image.setImageResource(characterId);
     }
 
     /**
