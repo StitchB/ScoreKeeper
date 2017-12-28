@@ -84,6 +84,33 @@ public class BattleActivity extends AppCompatActivity {
     static final String STATE_SPECIAL_USED_FIGHTER_1 = "specialUsedFighter1";
     static final String STATE_SPECIAL_USED_FIGHTER_2 = "specialUsedFighter2";
 
+    //Attack text views
+    public TextView fighter1Attack1View;
+    public TextView fighter1Attack2View;
+    public TextView fighter1Attack3View;
+    public TextView fighter1Attack4View;
+    public TextView fighter2Attack1View;
+    public TextView fighter2Attack2View;
+    public TextView fighter2Attack3View;
+    public TextView fighter2Attack4View;
+
+    //Score text views
+    public TextView fighter1ScoreView;
+    public TextView fighter2ScoreView;
+
+    //Victory card view
+    public CardView victoryView;
+    public TextView victoryNameView;
+    public ImageView victoryImageView;
+
+    //Fighter names
+    public TextView fighter1NameView;
+    public TextView fighter2NameView;
+
+    //Fighter images
+    public ImageView fighter1Image;
+    public ImageView fighter2Image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +121,34 @@ public class BattleActivity extends AppCompatActivity {
         //Set 'activity_battle' as a main design file
         setContentView(R.layout.activity_battle);
 
+        //Attack text views
+        fighter1Attack1View = findViewById(R.id.fighter_1_attack_1);
+        fighter1Attack2View = findViewById(R.id.fighter_1_attack_2);
+        fighter1Attack3View = findViewById(R.id.fighter_1_attack_3);
+        fighter1Attack4View = findViewById(R.id.fighter_1_attack_4);
+        fighter2Attack1View = findViewById(R.id.fighter_2_attack_1);
+        fighter2Attack2View = findViewById(R.id.fighter_2_attack_2);
+        fighter2Attack3View = findViewById(R.id.fighter_2_attack_3);
+        fighter2Attack4View = findViewById(R.id.fighter_2_attack_4);
+
+        //Score text views
+        fighter1ScoreView = findViewById(R.id.fighter_1_score);
+        fighter2ScoreView = findViewById(R.id.fighter_2_score);
+
+        //Victory card view
+        victoryView = findViewById(R.id.victory_card_view);
+        victoryNameView = findViewById(R.id.victory_character);
+        victoryImageView = findViewById(R.id.victory_image);
+
+        //Fighter names
+        fighter1NameView = findViewById(R.id.fighter_1_name);
+        fighter2NameView = findViewById(R.id.fighter_2_name);
+
+        //Fighter images
+        fighter1Image = findViewById(R.id.fighter_1_image);
+        fighter2Image = findViewById(R.id.fighter_2_image);
+
+        //Get data set by previous activity
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             selectedCharacter1 = extras.getInt("SELECTED_CHARACTER_1");
@@ -120,11 +175,10 @@ public class BattleActivity extends AppCompatActivity {
 
         //Use first selected fighter
         int firstFighterId = getResources().getIdentifier("fighter_" + selectedCharacter1 + "_waiting", "drawable", getPackageName());
-        ImageView firstFighterImage = findViewById(R.id.fighter_1);
-        firstFighterImage.setImageResource(firstFighterId);
+        fighter1Image.setImageResource(firstFighterId);
 
         //First fighter animation
-        ObjectAnimator image1Y = ObjectAnimator.ofFloat(firstFighterImage, View.TRANSLATION_Y, 70);
+        ObjectAnimator image1Y = ObjectAnimator.ofFloat(fighter1Image, View.TRANSLATION_Y, 70);
         image1Y.setDuration(2500);
         image1Y.setRepeatMode(ValueAnimator.REVERSE);
         image1Y.setRepeatCount(ValueAnimator.INFINITE);
@@ -137,11 +191,10 @@ public class BattleActivity extends AppCompatActivity {
 
         //Use second selected fighter
         int secondFighterId = getResources().getIdentifier("fighter_" + selectedCharacter2 + "_waiting_flipped", "drawable", getPackageName());
-        ImageView secondFighterImage = findViewById(R.id.fighter_2);
-        secondFighterImage.setImageResource(secondFighterId);
+        fighter2Image.setImageResource(secondFighterId);
 
         //Second fighter animation
-        ObjectAnimator image2Y = ObjectAnimator.ofFloat(secondFighterImage, View.TRANSLATION_Y, 70);
+        ObjectAnimator image2Y = ObjectAnimator.ofFloat(fighter2Image, View.TRANSLATION_Y, 70);
         image2Y.setDuration(2500);
         image2Y.setRepeatMode(ValueAnimator.REVERSE);
         image2Y.setRepeatCount(ValueAnimator.INFINITE);
@@ -250,8 +303,12 @@ public class BattleActivity extends AppCompatActivity {
                 addedScore = getRandomAttackValue();
 
                 //Hide special attack button
-                TextView attack4View = findViewById(firstFighter ? R.id.fighter_1_attack_4 : R.id.fighter_2_attack_4);
-                attack4View.setVisibility(View.INVISIBLE);
+                if(firstFighter) {
+                    fighter1Attack4View.setVisibility(View.INVISIBLE);
+                }
+                else {
+                    fighter2Attack4View.setVisibility(View.INVISIBLE);
+                }
 
                 //Set special bar progress to 0
                 if (firstFighter) {
@@ -267,10 +324,10 @@ public class BattleActivity extends AppCompatActivity {
 
         //Add score for a correct fighter
         if (firstFighter) {
-            scoreFighter1 = scoreFighter1 + addedScore;
+            scoreFighter1 += addedScore;
         }
         else {
-            scoreFighter2 = scoreFighter2 + addedScore;
+            scoreFighter2 += addedScore;
         }
 
         //Display score change
@@ -285,8 +342,12 @@ public class BattleActivity extends AppCompatActivity {
      */
     private void displayScoreChange(boolean firstFighter, int updateValue) {
         //Set score for one of the fighters
-        TextView scoreView = findViewById(firstFighter ? R.id.fighter_1_score : R.id.fighter_2_score);
-        scoreView.setText(String.valueOf(firstFighter ? scoreFighter1 : scoreFighter2));
+        if(firstFighter) {
+            fighter1ScoreView.setText(String.valueOf(scoreFighter1));
+        }
+        else {
+            fighter2ScoreView.setText(String.valueOf(scoreFighter2));
+        }
 
         //Update progress bar
         updateProgressBars(firstFighter, updateValue);
@@ -304,24 +365,25 @@ public class BattleActivity extends AppCompatActivity {
             }
 
             //Make special attack button visible
-            TextView attack4View = findViewById(firstFighter ? R.id.fighter_2_attack_4 : R.id.fighter_1_attack_4);
-            attack4View.setVisibility(View.VISIBLE);
+            if(firstFighter) {
+                fighter2Attack4View.setVisibility(View.VISIBLE);
+            }
+            else {
+                fighter1Attack4View.setVisibility(View.VISIBLE);
+            }
         }
 
         //If one of fighters has lost
         if (energyBar1Value <= 0 || energyBar2Value <= 0) {
             //Show 'Victory' image
-            CardView victoryView = findViewById(R.id.victory_card_view);
             victoryView.setVisibility(View.VISIBLE);
 
             //Show message with the winner name
             String character1Id = String.valueOf(energyBar2Value <= 0 ? selectedCharacter1 : selectedCharacter2);
-            TextView victoryNameView = findViewById(R.id.victory_character);
             victoryNameView.setText(String.valueOf(characters.get(character1Id).get("name")) + " is the winner!");
 
             //Show correct winner image
             int firstFighterId = getResources().getIdentifier("victory_" + (energyBar2Value <= 0 ? selectedCharacter1 : selectedCharacter2), "drawable", getPackageName());
-            ImageView victoryImageView = findViewById(R.id.victory_image);
             victoryImageView.setImageResource(firstFighterId);
 
             //Hide all attack buttons
@@ -369,8 +431,12 @@ public class BattleActivity extends AppCompatActivity {
         //Apply transition into main image view & change character
         TransitionDrawable mainImageTransition = new TransitionDrawable(backgrounds);
 
-        ImageView image = findViewById(firstFighter ? R.id.fighter_1 : R.id.fighter_2);
-        image.setImageDrawable(mainImageTransition);
+        if(firstFighter) {
+            fighter1Image.setImageDrawable(mainImageTransition);
+        }
+        else {
+            fighter2Image.setImageDrawable(mainImageTransition);
+        }
 
         mainImageTransition.setCrossFadeEnabled(true);
         mainImageTransition.startTransition(500);
@@ -386,18 +452,18 @@ public class BattleActivity extends AppCompatActivity {
         //If the first fighter
         if (firstFighter) {
             if (energyBar2Value > 0) {
-                energyBar2Value = energyBar2Value - updateValue;
+                energyBar2Value -= updateValue;
             }
-            specialBar2Value = specialBar2Value + updateValue;
+            specialBar2Value += updateValue;
             energyBarFighter2.setProgress(energyBar2Value);
             specialBarFighter2.setProgress(specialBar2Value);
-        //If the second fighter
         }
+        //If the second fighter
         else {
             if (energyBar1Value > 0) {
-                energyBar1Value = energyBar1Value - updateValue;
+                energyBar1Value -= updateValue;
             }
-            specialBar1Value = specialBar1Value + updateValue;
+            specialBar1Value += updateValue;
             energyBarFighter1.setProgress(energyBar1Value);
             specialBarFighter1.setProgress(specialBar1Value);
         }
@@ -432,7 +498,6 @@ public class BattleActivity extends AppCompatActivity {
         specialUsedFighter2 = false;
 
         //Hide Victory view
-        CardView victoryView = findViewById(R.id.victory_card_view);
         victoryView.setVisibility(View.INVISIBLE);
 
         //Show attack buttons (without 'Attack 4')
@@ -513,24 +578,44 @@ public class BattleActivity extends AppCompatActivity {
      */
     private void showCharacterData(boolean firstFighter, String characterId) {
         //Character Name
-        TextView nameView = findViewById(firstFighter ? R.id.fighter_1_name : R.id.fighter_2_name);
-        nameView.setText(String.valueOf(characters.get(characterId).get("name")));
+        if(firstFighter) {
+            fighter1NameView.setText(String.valueOf(characters.get(characterId).get("name")));
+        }
+        else {
+            fighter2NameView.setText(String.valueOf(characters.get(characterId).get("name")));
+        }
 
         //Attack 1 Name
-        TextView attack1View = findViewById(firstFighter ? R.id.fighter_1_attack_1 : R.id.fighter_2_attack_1);
-        attack1View.setText(String.valueOf(characters.get(characterId).get("attack_1")));
+        if(firstFighter) {
+            fighter1Attack1View.setText(String.valueOf(characters.get(characterId).get("attack_1")));
+        }
+        else {
+            fighter2Attack1View.setText(String.valueOf(characters.get(characterId).get("attack_1")));
+        }
 
         //Attack 2 Name
-        TextView attack2View = findViewById(firstFighter ? R.id.fighter_1_attack_2 : R.id.fighter_2_attack_2);
-        attack2View.setText(String.valueOf(characters.get(characterId).get("attack_2")));
+        if(firstFighter) {
+            fighter1Attack2View.setText(String.valueOf(characters.get(characterId).get("attack_2")));
+        }
+        else {
+            fighter2Attack2View.setText(String.valueOf(characters.get(characterId).get("attack_2")));
+        }
 
         //Attack 3 Name
-        TextView attack3View = findViewById(firstFighter ? R.id.fighter_1_attack_3 : R.id.fighter_2_attack_3);
-        attack3View.setText(String.valueOf(characters.get(characterId).get("attack_3")));
+        if(firstFighter) {
+            fighter1Attack3View.setText(String.valueOf(characters.get(characterId).get("attack_3")));
+        }
+        else {
+            fighter2Attack3View.setText(String.valueOf(characters.get(characterId).get("attack_3")));
+        }
 
         //Attack 4 Name
-        TextView attack4View = findViewById(firstFighter ? R.id.fighter_1_attack_4 : R.id.fighter_2_attack_4);
-        attack4View.setText(String.valueOf(characters.get(characterId).get("attack_4")));
+        if(firstFighter) {
+            fighter1Attack4View.setText(String.valueOf(characters.get(characterId).get("attack_4")));
+        }
+        else {
+            fighter2Attack4View.setText(String.valueOf(characters.get(characterId).get("attack_4")));
+        }
     }
 
     /**
@@ -541,29 +626,21 @@ public class BattleActivity extends AppCompatActivity {
      */
     private void showHideAttacks(boolean show, boolean excludeSpecial) {
         //Attack 1
-        TextView attack1View = findViewById(R.id.fighter_1_attack_1);
-        attack1View.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
-        attack1View = findViewById(R.id.fighter_2_attack_1);
-        attack1View.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
+        fighter1Attack1View.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
+        fighter2Attack1View.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
 
         //Attack 2
-        TextView attack2View = findViewById(R.id.fighter_1_attack_2);
-        attack2View.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
-        attack2View = findViewById(R.id.fighter_2_attack_2);
-        attack2View.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
+        fighter1Attack2View.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
+        fighter2Attack2View.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
 
         //Attack 3
-        TextView attack3View = findViewById(R.id.fighter_1_attack_3);
-        attack3View.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
-        attack3View = findViewById(R.id.fighter_2_attack_3);
-        attack3View.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
+        fighter1Attack3View.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
+        fighter2Attack3View.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
 
         //Attack 4
         if (!excludeSpecial) {
-            TextView attack4View = findViewById(R.id.fighter_1_attack_4);
-            attack4View.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
-            attack4View = findViewById(R.id.fighter_2_attack_4);
-            attack4View.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
+            fighter1Attack4View.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
+            fighter2Attack4View.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
         }
     }
 

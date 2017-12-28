@@ -28,6 +28,9 @@ public class SelectSecondCharacterActivity extends AppCompatActivity {
     static final String STATE_SELECTED_CHARACTER_1 = "selectedCharacter1";
     static final String STATE_SELECTED_CHARACTER_2 = "selectedCharacter2";
 
+    //Character image view
+    ImageView character_image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,7 @@ public class SelectSecondCharacterActivity extends AppCompatActivity {
         //Set 'activity_select_second_character' as a main design file
         setContentView(R.layout.activity_select_second_character);
 
+        //Get data set by previous activity
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             selectedCharacter1 = extras.getInt("SELECTED_CHARACTER_1");
@@ -78,6 +82,9 @@ public class SelectSecondCharacterActivity extends AppCompatActivity {
             selectCharacter();
             }
         });
+
+        //Character image view
+        character_image = findViewById(R.id.character_image);
     }
 
     /**
@@ -158,8 +165,12 @@ public class SelectSecondCharacterActivity extends AppCompatActivity {
         }
         //Else if standard characters order
         else {
+            //If fifth character is selected as a first fighter & fourth character is currently visible - Make sure that first character is selected after fourth
+            if (selectedCharacter1 == 5 && lastCharacterCounter == 4) {
+                lastCharacterCounter = 1;
+            }
             //If fifth character - Make sure that first character is selected after fifth
-            if (lastCharacterCounter == 5) {
+            else if (lastCharacterCounter == 5) {
                 lastCharacterCounter = 1;
             }
             //Else increase character counter
@@ -191,8 +202,7 @@ public class SelectSecondCharacterActivity extends AppCompatActivity {
         //Apply transition into main image view & start animation
         TransitionDrawable mainImageTransition = new TransitionDrawable(backgrounds);
 
-        ImageView image = findViewById(R.id.character_image);
-        image.setImageDrawable(mainImageTransition);
+        character_image.setImageDrawable(mainImageTransition);
 
         mainImageTransition.setCrossFadeEnabled(true);
         mainImageTransition.startTransition(500);

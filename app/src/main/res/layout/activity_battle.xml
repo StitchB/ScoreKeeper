@@ -97,7 +97,7 @@
 
             <!-- First fighter image -->
             <ImageView
-                android:id="@+id/fighter_1"
+                android:id="@+id/fighter_1_image"
                 style="@style/WrapContent"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/doubleSpacing"
@@ -242,7 +242,7 @@
 
             <!-- Second fighter image -->
             <ImageView
-                android:id="@+id/fighter_2"
+                android:id="@+id/fighter_2_image"
                 style="@style/WrapContent"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/doubleSpacing"

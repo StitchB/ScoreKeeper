@@ -24,6 +24,9 @@ public class SelectFirstCharacterActivity extends AppCompatActivity {
     static final String STATE_LAST_CHARACTER_COUNTER = "lastCharacterCounter";
     static final String STATE_SELECTED_CHARACTER_1 = "selectedCharacter1";
 
+    //Character image view
+    ImageView character_image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +63,9 @@ public class SelectFirstCharacterActivity extends AppCompatActivity {
             selectCharacter();
             }
         });
+
+        //Character image view
+        character_image = findViewById(R.id.character_image);
     }
 
     /**
@@ -125,16 +131,6 @@ public class SelectFirstCharacterActivity extends AppCompatActivity {
             else {
                 lastCharacterCounter--;
             }
-
-            //Change to fifth character if first was already selected
-            if (selectedCharacter1 == 1 && lastCharacterCounter == 1) {
-                lastCharacterCounter = 5;
-            }
-
-            //Avoid selecting the same character
-            if (selectedCharacter1 == lastCharacterCounter) {
-                lastCharacterCounter--;
-            }
         }
         //Else if standard characters order
         else {
@@ -144,16 +140,6 @@ public class SelectFirstCharacterActivity extends AppCompatActivity {
             }
             //Else increase character counter
             else {
-                lastCharacterCounter++;
-            }
-
-            //Change to second character if first was already selected
-            if (selectedCharacter1 == 1 && lastCharacterCounter == 1) {
-                lastCharacterCounter = 2;
-            }
-
-            //Avoid selecting the same character
-            if (selectedCharacter1 == lastCharacterCounter) {
                 lastCharacterCounter++;
             }
         }
@@ -171,8 +157,7 @@ public class SelectFirstCharacterActivity extends AppCompatActivity {
         //Apply transition into main image view & start animation
         TransitionDrawable mainImageTransition = new TransitionDrawable(backgrounds);
 
-        ImageView image = findViewById(R.id.character_image);
-        image.setImageDrawable(mainImageTransition);
+        character_image.setImageDrawable(mainImageTransition);
 
         mainImageTransition.setCrossFadeEnabled(true);
         mainImageTransition.startTransition(500);

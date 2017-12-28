@@ -26,6 +26,9 @@ public class SelectArenaActivity extends AppCompatActivity {
     static final String STATE_SELECTED_CHARACTER_1 = "selectedCharacter1";
     static final String STATE_SELECTED_CHARACTER_2 = "selectedCharacter2";
 
+    //Arena image view
+    ImageView arena_image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,7 @@ public class SelectArenaActivity extends AppCompatActivity {
         //Set 'activity_select_arena' as a main design file
         setContentView(R.layout.activity_select_arena);
 
+        //Get data set by previous activity
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             selectedCharacter1 = extras.getInt("SELECTED_CHARACTER_1");
@@ -68,6 +72,9 @@ public class SelectArenaActivity extends AppCompatActivity {
             selectArena();
             }
         });
+
+        //Arena image view
+        arena_image = findViewById(R.id.arena_image);
     }
 
     /**
@@ -159,8 +166,7 @@ public class SelectArenaActivity extends AppCompatActivity {
         //Apply transition into main image view & change arena
         TransitionDrawable mainImageTransition = new TransitionDrawable(backgrounds);
 
-        ImageView image = findViewById(R.id.arena_image);
-        image.setImageDrawable(mainImageTransition);
+        arena_image.setImageDrawable(mainImageTransition);
     }
 
     /**
