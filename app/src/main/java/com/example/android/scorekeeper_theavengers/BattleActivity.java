@@ -4,6 +4,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
@@ -27,12 +28,12 @@ import java.util.Random;
 public class BattleActivity extends AppCompatActivity {
 
     //Constants for maximum of 'Energy' & 'Special' Bars
-    protected static final int MAX_ENERGY = 100;
-    protected static final int MAX_SPECIAL = 80;
+    private static final int MAX_ENERGY = 100;
+    private static final int MAX_SPECIAL = 80;
 
     //Constants for minimum & maximum damage values inflicted by 'Special' attack
-    protected static final int MIN_RANDOM = 10;
-    protected static final int MAX_RANDOM = 30;
+    private static final int MIN_RANDOM = 10;
+    private static final int MAX_RANDOM = 30;
 
     //Variables to keep first selected characters
     private int selectedCharacter1, selectedCharacter2;
@@ -67,40 +68,40 @@ public class BattleActivity extends AppCompatActivity {
     private boolean specialUsedFighter2 = false;
 
     //Hashmap for keeping characters
-    protected HashMap<String, HashMap<String, String>> characters = new HashMap<String, HashMap<String, String>>();
+    private final HashMap<String, HashMap<String, String>> characters = new HashMap<>();
 
     //Used to keep activity state
-    static final String STATE_SELECTED_CHARACTER_1 = "selectedCharacter1";
-    static final String STATE_SELECTED_CHARACTER_2 = "selectedCharacter2";
-    static final String STATE_SELECTED_ARENA = "selectedArena";
-    static final String STATE_SCORE_FIGHTER_1 = "scoreFighter1";
-    static final String STATE_SCORE_FIGHTER_2 = "scoreFighter2";
-    static final String STATE_LAST_ATTACK_NO_CHARACTER_1 = "lastAttackNoCharacter1";
-    static final String STATE_LAST_ATTACK_NO_CHARACTER_2 = "lastAttackNoCharacter2";
-    static final String STATE_ENERGY_BAR_1_VALUE = "energyBar1Value";
-    static final String STATE_ENERGY_BAR_2_VALUE = "energyBar2Value";
-    static final String STATE_SPECIAL_BAR_1_VALUE = "specialBar1Value";
-    static final String STATE_SPECIAL_BAR_2_VALUE = "specialBar2Value";
-    static final String STATE_SPECIAL_USED_FIGHTER_1 = "specialUsedFighter1";
-    static final String STATE_SPECIAL_USED_FIGHTER_2 = "specialUsedFighter2";
+    private static final String STATE_SELECTED_CHARACTER_1 = "selectedCharacter1";
+    private static final String STATE_SELECTED_CHARACTER_2 = "selectedCharacter2";
+    private static final String STATE_SELECTED_ARENA = "selectedArena";
+    private static final String STATE_SCORE_FIGHTER_1 = "scoreFighter1";
+    private static final String STATE_SCORE_FIGHTER_2 = "scoreFighter2";
+    private static final String STATE_LAST_ATTACK_NO_CHARACTER_1 = "lastAttackNoCharacter1";
+    private static final String STATE_LAST_ATTACK_NO_CHARACTER_2 = "lastAttackNoCharacter2";
+    private static final String STATE_ENERGY_BAR_1_VALUE = "energyBar1Value";
+    private static final String STATE_ENERGY_BAR_2_VALUE = "energyBar2Value";
+    private static final String STATE_SPECIAL_BAR_1_VALUE = "specialBar1Value";
+    private static final String STATE_SPECIAL_BAR_2_VALUE = "specialBar2Value";
+    private static final String STATE_SPECIAL_USED_FIGHTER_1 = "specialUsedFighter1";
+    private static final String STATE_SPECIAL_USED_FIGHTER_2 = "specialUsedFighter2";
 
     //Attack button views
-    public Button fighter1Attack1View, fighter1Attack2View, fighter1Attack3View, fighter1Attack4View,
-                  fighter2Attack1View, fighter2Attack2View, fighter2Attack3View, fighter2Attack4View;
+    private Button fighter1Attack1View, fighter1Attack2View, fighter1Attack3View, fighter1Attack4View,
+                   fighter2Attack1View, fighter2Attack2View, fighter2Attack3View, fighter2Attack4View;
 
     //Score text views
-    public TextView fighter1ScoreView, fighter2ScoreView;
+    private TextView fighter1ScoreView, fighter2ScoreView;
 
     //Victory card view
-    public CardView victoryView;
-    public TextView victoryNameView;
-    public ImageView victoryImageView;
+    private CardView victoryView;
+    private TextView victoryNameView;
+    private ImageView victoryImageView;
 
     //Fighter names
-    public TextView fighter1NameView, fighter2NameView;
+    private TextView fighter1NameView, fighter2NameView;
 
     //Fighter images
-    public ImageView fighter1Image, fighter2Image;
+    private ImageView fighter1Image, fighter2Image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +129,8 @@ public class BattleActivity extends AppCompatActivity {
 
         //Victory card view
         victoryView = findViewById(R.id.victory_card_view);
+        victoryView.setCardBackgroundColor(Color.TRANSPARENT);
+        victoryView.setCardElevation(0);
         victoryNameView = findViewById(R.id.victory_character);
         victoryImageView = findViewById(R.id.victory_image);
 
@@ -203,7 +206,7 @@ public class BattleActivity extends AppCompatActivity {
     /**
      * Save instance state
      *
-     * @param savedInstanceState
+     * @param savedInstanceState - Saved instance state
      */
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -229,7 +232,7 @@ public class BattleActivity extends AppCompatActivity {
     /**
      * Restore instance state
      *
-     * @param savedInstanceState
+     * @param savedInstanceState - Saved instance state
      */
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         //Call the superclass so it can restore the view hierarchy
@@ -253,6 +256,17 @@ public class BattleActivity extends AppCompatActivity {
         //Set correct scores
         fighter1ScoreView.setText(String.valueOf(scoreFighter1));
         fighter2ScoreView.setText(String.valueOf(scoreFighter2));
+
+        //Set correct character graphics
+        startFighterTransition(true, lastAttackNoCharacter1);
+        startFighterTransition(false, lastAttackNoCharacter2);
+
+        //Show Special Attack buttons
+        showSpecialAttackButton(true, true);
+        showSpecialAttackButton(false, true);
+
+        //Show Victory View
+        showVictoryView();
     }
 
     /**
@@ -347,9 +361,20 @@ public class BattleActivity extends AppCompatActivity {
         //Update progress bar
         updateProgressBars(firstFighter, updateValue);
 
+        //Show Special Attack button
+        showSpecialAttackButton(firstFighter, false);
+
+        //Show Victory View
+        showVictoryView();
+    }
+
+    /**
+     * Show Special Attack Button
+     */
+    private void showSpecialAttackButton(boolean firstFighter, boolean onRestoreInstanceState) {
         //If enough points gained to activate special for an opponent of the current fighter & special wasn't used yet by that opponent
         if ((firstFighter ? specialBar2Value : specialBar1Value) >= MAX_SPECIAL &&
-            !(firstFighter ? specialUsedFighter2 : specialUsedFighter1)) {
+             (!(firstFighter ? specialUsedFighter2 : specialUsedFighter1) || onRestoreInstanceState)) {
 
             //Set value for 'Special Used' flags to true to not allow using special twice during one fight
             if (firstFighter) {
@@ -367,7 +392,12 @@ public class BattleActivity extends AppCompatActivity {
                 fighter1Attack4View.setVisibility(View.VISIBLE);
             }
         }
+    }
 
+    /**
+     * Show Victory View
+     */
+    private void showVictoryView() {
         //If one of fighters has lost
         if (energyBar1Value <= 0 || energyBar2Value <= 0) {
             //Show 'Victory' image
@@ -518,9 +548,9 @@ public class BattleActivity extends AppCompatActivity {
     /**
      * Set characters data
      */
-    protected void setCharactersData() {
+    private void setCharactersData() {
         //Thor
-        HashMap<String, String> value = new HashMap<String, String>();
+        HashMap<String, String> value = new HashMap<>();
         value.put("name", "Thor");
         value.put("attack_1", "Mjolnir Hit");
         value.put("attack_2", "Mjolnir Smash");
@@ -529,7 +559,7 @@ public class BattleActivity extends AppCompatActivity {
         characters.put("1", value);
 
         //Black Widow
-        value = new HashMap<String, String>();
+        value = new HashMap<>();
         value.put("name", "Black Widow");
         value.put("attack_1", "Perfect Punch");
         value.put("attack_2", "Unexpected Attack");
@@ -538,7 +568,7 @@ public class BattleActivity extends AppCompatActivity {
         characters.put("2", value);
 
         //Iron Man
-        value = new HashMap<String, String>();
+        value = new HashMap<>();
         value.put("name", "Iron Man");
         value.put("attack_1", "Light Beam");
         value.put("attack_2", "The Charge");
@@ -547,7 +577,7 @@ public class BattleActivity extends AppCompatActivity {
         characters.put("3", value);
 
         //Hulk
-        value = new HashMap<String, String>();
+        value = new HashMap<>();
         value.put("name", "Hulk");
         value.put("attack_1", "Strong Punch");
         value.put("attack_2", "Angry Fists");
@@ -556,7 +586,7 @@ public class BattleActivity extends AppCompatActivity {
         characters.put("4", value);
 
         //Captain America
-        value = new HashMap<String, String>();
+        value = new HashMap<>();
         value.put("name", "Captain America");
         value.put("attack_1", "Low Strike");
         value.put("attack_2", "Vigorous Attack");

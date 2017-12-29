@@ -22,15 +22,12 @@ public class SelectArenaActivity extends AppCompatActivity implements OnClickLis
     private int selectedCharacter1, selectedCharacter2;
 
     //Used to keep activity state
-    static final String STATE_LAST_ARENA_COUNTER = "lastArenaCounter";
-    static final String STATE_SELECTED_CHARACTER_1 = "selectedCharacter1";
-    static final String STATE_SELECTED_CHARACTER_2 = "selectedCharacter2";
+    private static final String STATE_LAST_ARENA_COUNTER = "lastArenaCounter";
+    private static final String STATE_SELECTED_CHARACTER_1 = "selectedCharacter1";
+    private static final String STATE_SELECTED_CHARACTER_2 = "selectedCharacter2";
 
     //Arena image view
-    ImageView arena_image;
-
-    //Image buttons
-    ImageButton buttonPrev, buttonNext, buttonSelect;
+    private ImageView arena_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +63,7 @@ public class SelectArenaActivity extends AppCompatActivity implements OnClickLis
     /**
      * Save instance state
      *
-     * @param savedInstanceState
+     * @param savedInstanceState - Saved instance state
      */
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -82,7 +79,7 @@ public class SelectArenaActivity extends AppCompatActivity implements OnClickLis
     /**
      * Restore instance state
      *
-     * @param savedInstanceState
+     * @param savedInstanceState - Saved instance state
      */
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         //Call the superclass so it can restore the view hierarchy

@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchParent"
+    tools:context=".BattleActivity">
+
+    <!-- Main background -->
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/background"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg" />
+
+    <!-- View wrapping all main elements -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <!-- View wrapping left part of the main elements -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- First fighter name -->
+            <TextView
+                android:id="@+id/fighter_1_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/american_captain"
+                android:gravity="center"
+                android:paddingBottom="@dimen/standardSpacing"
+                android:paddingTop="@dimen/standardSpacing"
+                android:shadowColor="@color/shadowColor"
+                android:shadowDx="@dimen/shadowOffset"
+                android:shadowDy="@dimen/shadowOffset"
+                android:shadowRadius="@dimen/shadowRadius"
+                android:text=""
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/fighterNameTextSize" />
+
+            <!-- First fighter 'Energy' bar -->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/standardSpacing"
+                android:layout_marginBottom="@dimen/standardSpacing"
+                android:layout_marginStart="@dimen/standardSpacing">
+
+                <ProgressBar
+                    android:id="@+id/fighter_1_energy_bar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="@dimen/energyBarWidth"
+                    android:layout_height="wrap_content"
+                    android:progressBackgroundTint="@color/fighter1BarsBackgroundTint"
+                    android:progressTint="@color/energyBar1Tint"
+                    android:scaleY="@dimen/progressBarScaleY" />
+            </FrameLayout>
+
+            <!-- First fighter 'Special' bar -->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/standardSpacing"
+                android:layout_marginStart="@dimen/standardSpacing">
+
+                <ProgressBar
+                    android:id="@+id/fighter_1_special_bar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="@dimen/specialBarWidth"
+                    android:layout_height="wrap_content"
+                    android:progressBackgroundTint="@color/fighter1BarsBackgroundTint"
+                    android:progressTint="@color/specialBar1Tint"
+                    android:scaleY="@dimen/progressBarScaleY" />
+            </FrameLayout>
+
+            <!-- First fighter score -->
+            <TextView
+                android:id="@+id/fighter_1_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standardSpacing"
+                android:layout_marginBottom="@dimen/standardSpacing"
+                android:fontFamily="@font/american_captain"
+                android:gravity="center"
+                android:shadowColor="@color/scoreShadowColor"
+                android:shadowDx="@dimen/shadowOffset"
+                android:shadowDy="@dimen/shadowOffset"
+                android:shadowRadius="@dimen/shadowRadius"
+                android:text="0"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/fighterScoreTextSize" />
+
+            <!-- First fighter image -->
+            <ImageView
+                android:id="@+id/fighter_1_image"
+                style="@style/WrapContent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/doubleSpacing"
+                android:layout_marginBottom="@dimen/tripleSpacing"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/fighter_1"
+                android:scaleType="centerCrop" />
+
+            <!-- First fighter 'Attack 1' button -->
+            <Button
+                android:id="@+id/fighter_1_attack_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/standardSpacing"
+                android:layout_marginLeft="@dimen/attackButtonHorizontalMargin"
+                android:layout_marginRight="@dimen/attackButtonHorizontalMargin"
+                android:layout_marginTop="@dimen/tripleSpacing"
+                android:background="@drawable/button_bg_rounded_corners"
+                android:fontFamily="@font/american_captain"
+                android:onClick="addPointsForFighter"
+                android:tag="1_1"
+                android:text="@string/attack_1"
+                android:textSize="@dimen/attackNameTextSize" />
+
+            <!-- First fighter 'Attack 2' button -->
+            <Button
+                android:id="@+id/fighter_1_attack_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/standardSpacing"
+                android:layout_marginLeft="@dimen/attackButtonHorizontalMargin"
+                android:layout_marginRight="@dimen/attackButtonHorizontalMargin"
+                android:background="@drawable/button_bg_rounded_corners"
+                android:fontFamily="@font/american_captain"
+                android:onClick="addPointsForFighter"
+                android:tag="1_2"
+                android:text="@string/attack_2"
+                android:textSize="@dimen/attackNameTextSize" />
+
+            <!-- First fighter 'Attack 3' button -->
+            <Button
+                android:id="@+id/fighter_1_attack_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/standardSpacing"
+                android:layout_marginLeft="@dimen/attackButtonHorizontalMargin"
+                android:layout_marginRight="@dimen/attackButtonHorizontalMargin"
+                android:background="@drawable/button_bg_rounded_corners"
+                android:fontFamily="@font/american_captain"
+                android:onClick="addPointsForFighter"
+                android:tag="1_3"
+                android:text="@string/attack_3"
+                android:textSize="@dimen/attackNameTextSize" />
+
+            <!-- First fighter 'Attack 4' ('Special') button -->
+            <Button
+                android:id="@+id/fighter_1_attack_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/attackButtonHorizontalMargin"
+                android:layout_marginRight="@dimen/attackButtonHorizontalMargin"
+                android:background="@drawable/button_bg_rounded_corners"
+                android:fontFamily="@font/american_captain"
+                android:onClick="addPointsForFighter"
+                android:tag="1_4"
+                android:text="@string/attack_4"
+                android:textSize="@dimen/attackNameTextSize"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <!-- View wrapping right part of the main elements -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Second fighter name -->
+            <TextView
+                android:id="@+id/fighter_2_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/american_captain"
+                android:gravity="center"
+                android:paddingBottom="@dimen/standardSpacing"
+                android:paddingTop="@dimen/standardSpacing"
+                android:shadowColor="@color/shadowColor"
+                android:shadowDx="@dimen/shadowOffset"
+                android:shadowDy="@dimen/shadowOffset"
+                android:shadowRadius="@dimen/shadowRadius"
+                android:text=""
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/fighterNameTextSize" />
+
+            <!-- Second fighter 'Energy' bar -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/standardSpacing"
+                android:layout_marginBottom="@dimen/standardSpacing"
+                android:layout_marginStart="@dimen/standardSpacing">
+
+                <ProgressBar
+                    android:id="@+id/fighter_2_energy_bar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="@dimen/energyBarWidth"
+                    android:layout_height="wrap_content"
+                    android:progressBackgroundTint="@color/fighter2BarsBackgroundTint"
+                    android:progressTint="@color/energyBar2Tint"
+                    android:scaleY="@dimen/progressBarScaleY" />
+            </FrameLayout>
+
+            <!-- Second fighter 'Special' bar -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/standardSpacing"
+                android:layout_marginStart="@dimen/standardSpacing">
+
+                <ProgressBar
+                    android:id="@+id/fighter_2_special_bar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="@dimen/specialBarWidth"
+                    android:layout_height="wrap_content"
+                    android:progressBackgroundTint="@color/fighter2BarsBackgroundTint"
+                    android:progressTint="@color/specialBar2Tint"
+                    android:scaleY="@dimen/progressBarScaleY" />
+            </FrameLayout>
+
+            <!-- Second fighter score -->
+            <TextView
+                android:id="@+id/fighter_2_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standardSpacing"
+                android:layout_marginBottom="@dimen/standardSpacing"
+                android:fontFamily="@font/american_captain"
+                android:gravity="center"
+                android:shadowColor="@color/scoreShadowColor"
+                android:shadowDx="@dimen/shadowOffset"
+                android:shadowDy="@dimen/shadowOffset"
+                android:shadowRadius="@dimen/shadowRadius"
+                android:text="0"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/fighterScoreTextSize" />
+
+            <!-- Second fighter image -->
+            <ImageView
+                android:id="@+id/fighter_2_image"
+                style="@style/WrapContent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/doubleSpacing"
+                android:layout_marginBottom="@dimen/tripleSpacing"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/fighter_2"
+                android:scaleType="centerCrop" />
+
+            <!-- Second fighter 'Attack 1' button -->
+            <Button
+                android:id="@+id/fighter_2_attack_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/standardSpacing"
+                android:layout_marginLeft="@dimen/attackButtonHorizontalMargin"
+                android:layout_marginRight="@dimen/attackButtonHorizontalMargin"
+                android:layout_marginTop="@dimen/tripleSpacing"
+                android:background="@drawable/button_bg_rounded_corners"
+                android:fontFamily="@font/american_captain"
+                android:onClick="addPointsForFighter"
+                android:tag="2_1"
+                android:text="@string/attack_1"
+                android:textSize="@dimen/attackNameTextSize" />
+
+            <!-- Second fighter 'Attack 2' button -->
+            <Button
+                android:id="@+id/fighter_2_attack_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/standardSpacing"
+                android:layout_marginLeft="@dimen/attackButtonHorizontalMargin"
+                android:layout_marginRight="@dimen/attackButtonHorizontalMargin"
+                android:background="@drawable/button_bg_rounded_corners"
+                android:fontFamily="@font/american_captain"
+                android:onClick="addPointsForFighter"
+                android:tag="2_2"
+                android:text="@string/attack_2"
+                android:textSize="@dimen/attackNameTextSize" />
+
+            <!-- Second fighter 'Attack 3' button -->
+            <Button
+                android:id="@+id/fighter_2_attack_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/standardSpacing"
+                android:layout_marginLeft="@dimen/attackButtonHorizontalMargin"
+                android:layout_marginRight="@dimen/attackButtonHorizontalMargin"
+                android:background="@drawable/button_bg_rounded_corners"
+                android:fontFamily="@font/american_captain"
+                android:onClick="addPointsForFighter"
+                android:tag="2_3"
+                android:text="@string/attack_3"
+                android:textSize="@dimen/attackNameTextSize" />
+
+            <!-- Second fighter 'Attack 4' ('Special') button -->
+            <Button
+                android:id="@+id/fighter_2_attack_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/attackButtonHorizontalMargin"
+                android:layout_marginRight="@dimen/attackButtonHorizontalMargin"
+                android:background="@drawable/button_bg_rounded_corners"
+                android:fontFamily="@font/american_captain"
+                android:onClick="addPointsForFighter"
+                android:tag="2_4"
+                android:text="@string/attack_4"
+                android:textSize="@dimen/attackNameTextSize"
+                android:visibility="invisible" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Victory card view -->
+    <android.support.v7.widget.CardView
+        android:id="@+id/victory_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/victoryCardHeight"
+        android:layout_marginLeft="@dimen/standardSpacing"
+        android:layout_marginRight="@dimen/standardSpacing"
+        android:layout_marginTop="@dimen/victoryCardMarginTop"
+        android:visibility="gone"
+        card_view:cardBackgroundColor="@android:color/transparent"
+        card_view:cardElevation="0dp"
+        card_view:cardMaxElevation="0dp"
+        card_view:contentPadding="0dp">
+
+        <!-- Victory card view group -->
+        <RelativeLayout
+            android:id="@+id/card_inner_layout"
+            style="@style/MatchParent">
+
+            <!-- Victory image -->
+            <com.makeramen.roundedimageview.RoundedImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/victory_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/victoryCardHeight"
+                android:contentDescription="@string/victory"
+                android:scaleType="fitCenter"
+                android:src="@drawable/victory_1"
+                app:riv_corner_radius="@dimen/standardSpacing" />
+
+            <!-- Victorious character name -->
+            <TextView
+                android:id="@+id/victory_character"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/reset_score"
+                android:layout_marginBottom="@dimen/victoriousCharacterMarginBottom"
+                android:fontFamily="@font/american_captain"
+                android:gravity="center"
+                android:shadowColor="@color/victoriousCharacterShadowColor"
+                android:shadowDx="@dimen/shadowOffset"
+                android:shadowDy="@dimen/shadowOffset"
+                android:shadowRadius="@dimen/shadowRadius"
+                android:text=""
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/victoriousCharacterTextSize" />
+
+            <!-- Reset score button -->
+            <Button
+                android:id="@+id/reset_score"
+                style="@style/WrapContent"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/resetMarginBottom"
+                android:layout_marginLeft="@dimen/attackButtonHorizontalMargin"
+                android:layout_marginRight="@dimen/attackButtonHorizontalMargin"
+                android:background="@drawable/button_bg_rounded_corners"
+                android:fontFamily="@font/american_captain"
+                android:onClick="resetFight"
+                android:text="@string/fight_again"
+                android:textSize="@dimen/resetTextSize" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

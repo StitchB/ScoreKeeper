@@ -7,11 +7,12 @@
     <dimen name="resetTextSize">16sp</dimen>
 
     <dimen name="standardSpacing">8dp</dimen>
-    <dimen name="doubleSpacing">8dp</dimen>
-    <dimen name="attackButtonHorizontalMargin">28dp</dimen>
+    <dimen name="attackButtonHorizontalMargin">16dp</dimen>
 
     <dimen name="selectionHeadingMargin">24dp</dimen>
-    <dimen name="arenaImageMarginTop">120dp</dimen>
+    <dimen name="arenaImageMarginTop">80dp</dimen>
+    <dimen name="arenaImageWidth">270dp</dimen>
+    <dimen name="arenaImageHeight">390dp</dimen>
     <dimen name="arenaImageBorderWidth">3dp</dimen>
 
     <dimen name="shadowOffset">6</dimen>

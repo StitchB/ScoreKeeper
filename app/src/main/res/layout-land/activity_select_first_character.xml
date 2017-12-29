@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchParent"
+    tools:context=".SelectFirstCharacterActivity">
+
+    <!-- Main background -->
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/background"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg" />
+
+    <!-- Main Heading/Select First Fighter text -->
+    <TextView
+        android:id="@+id/main_heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/selectionHeadingMargin"
+        android:layout_marginTop="@dimen/selectionHeadingMargin"
+        android:fontFamily="@font/american_captain"
+        android:shadowColor="@color/shadowColor"
+        android:shadowDx="@dimen/shadowOffset"
+        android:shadowDy="@dimen/shadowOffset"
+        android:shadowRadius="@dimen/shadowRadius"
+        android:text="@string/select_fighter_1"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/headingTextSize" />
+
+    <!-- Character Image -->
+    <ImageView
+        android:id="@+id/character_image"
+        style="@style/WrapContent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/character_image"
+        android:layout_marginTop="@dimen/doubleSpacing"
+        android:layout_marginBottom="@dimen/doubleSpacing"
+        android:src="@drawable/character_1" />
+
+    <!-- Button for changing to previous character -->
+    <ImageButton
+        android:id="@+id/button_prev"
+        style="@style/ActionButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="@dimen/standardSpacing"
+        android:layout_marginStart="@dimen/standardSpacing"
+        android:layout_marginTop="@dimen/standardSpacing"
+        android:contentDescription="@string/prev_character_button"
+        android:src="@drawable/selector_prev_button" />
+
+    <!-- Button for selecting first fighter -->
+    <ImageButton
+        android:id="@+id/button_select"
+        style="@style/ActionButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/standardSpacing"
+        android:layout_marginTop="@dimen/standardSpacing"
+        android:contentDescription="@string/select_character_button"
+        android:src="@drawable/selector_select_button" />
+
+    <!-- Button for changing to next character -->
+    <ImageButton
+        android:id="@+id/button_next"
+        style="@style/ActionButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/standardSpacing"
+        android:layout_marginEnd="@dimen/standardSpacing"
+        android:layout_marginTop="@dimen/standardSpacing"
+        android:contentDescription="@string/next_character_button"
+        android:src="@drawable/selector_next_button" />
+</RelativeLayout>

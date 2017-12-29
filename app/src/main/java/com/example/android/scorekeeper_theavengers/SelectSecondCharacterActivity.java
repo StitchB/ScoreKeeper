@@ -22,15 +22,12 @@ public class SelectSecondCharacterActivity extends AppCompatActivity implements 
     private int selectedCharacter1, selectedCharacter2;
 
     //Used to keep activity state
-    static final String STATE_LAST_CHARACTER_COUNTER = "lastCharacterCounter";
-    static final String STATE_SELECTED_CHARACTER_1 = "selectedCharacter1";
-    static final String STATE_SELECTED_CHARACTER_2 = "selectedCharacter2";
+    private static final String STATE_LAST_CHARACTER_COUNTER = "lastCharacterCounter";
+    private static final String STATE_SELECTED_CHARACTER_1 = "selectedCharacter1";
+    private static final String STATE_SELECTED_CHARACTER_2 = "selectedCharacter2";
 
     //Character image view
-    ImageView character_image;
-
-    //Image buttons
-    ImageButton buttonPrev, buttonNext, buttonSelect;
+    private ImageView character_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +45,15 @@ public class SelectSecondCharacterActivity extends AppCompatActivity implements 
             selectedCharacter1 = extras.getInt("SELECTED_CHARACTER_1");
         }
 
+        //Character image view
+        character_image = findViewById(R.id.character_image);
+
         //If Character 1 (Thor) was selected as a first fighter
         if(selectedCharacter1 == 1)
         {
             //Show Character 2 (Black Widow) on Activity load
             lastCharacterCounter = 2;
-            ImageView characterImage = findViewById(R.id.character_image);
-            characterImage.setImageResource(R.drawable.character_2);
+            character_image.setImageResource(R.drawable.character_2);
         }
 
         //Image buttons
@@ -66,15 +65,12 @@ public class SelectSecondCharacterActivity extends AppCompatActivity implements 
         buttonPrev.setOnClickListener(this);
         buttonNext.setOnClickListener(this);
         buttonSelect.setOnClickListener(this);
-
-        //Character image view
-        character_image = findViewById(R.id.character_image);
     }
 
     /**
      * Save instance state
      *
-     * @param savedInstanceState
+     * @param savedInstanceState - Saved instance state
      */
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -90,7 +86,7 @@ public class SelectSecondCharacterActivity extends AppCompatActivity implements 
     /**
      * Restore instance state
      *
-     * @param savedInstanceState
+     * @param savedInstanceState - Saved instance state
      */
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         //Call the superclass so it can restore the view hierarchy
@@ -144,7 +140,7 @@ public class SelectSecondCharacterActivity extends AppCompatActivity implements 
      *
      * @param reversedOrder - Reversed order of transition
      */
-    protected void startCharacterTransition(boolean reversedOrder) {
+    private void startCharacterTransition(boolean reversedOrder) {
         //First image
         String firstImage = "character_" + lastCharacterCounter;
         int firstImageId = getResources().getIdentifier(firstImage, "drawable", getPackageName());

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="headingTextSize">26sp</dimen>
+    <dimen name="fighterNameTextSize">20sp</dimen>
+    <dimen name="fighterScoreTextSize">50sp</dimen>
+    <dimen name="attackNameTextSize">15sp</dimen>
+    <dimen name="resetTextSize">16sp</dimen>
+    <dimen name="attackButtonWidth">180dp</dimen>
+    <dimen name="attackButtonHeight">50dp</dimen>
+
+    <dimen name="standardSpacing">16dp</dimen>
+    <dimen name="doubleSpacing">32dp</dimen>
+    <dimen name="negativeMargin">-8dp</dimen>
+    <dimen name="largeNegativeMargin">-32dp</dimen>
+    <dimen name="attackButtonHorizontalMargin">16dp</dimen>
+    <dimen name="fighterImageAttack1Margin">48dp</dimen>
+
+    <dimen name="selectionHeadingMargin">24dp</dimen>
+    <dimen name="arenaImageMargin">72dp</dimen>
+    <dimen name="arenaImageBorderWidth">3dp</dimen>
+
+    <dimen name="shadowOffset">6</dimen>
+    <dimen name="shadowRadius">3</dimen>
+
+    <dimen name="energyBarWidth">410dp</dimen>
+    <dimen name="specialBarWidth">328dp</dimen>
+    <dimen name="progressBarScaleY">2</dimen>
+
+    <dimen name="victoryCardHeight">500dp</dimen>
+    <dimen name="victoryCardMarginTop">50dp</dimen>
+    <dimen name="victoriousCharacterMarginBottom">32dp</dimen>
+    <dimen name="victoriousCharacterTextSize">32sp</dimen>
+    <dimen name="resetMarginBottom">32dp</dimen>
+</resources>
