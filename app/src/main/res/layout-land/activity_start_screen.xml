@@ -7,12 +7,14 @@
     <!-- Main background -->
     <ImageView
         android:id="@+id/background"
-        style="@style/MainBackground" />
+        style="@style/MainBackground"
+        android:contentDescription="@string/background" />
 
     <!-- Main Logo -->
     <ImageView
         android:id="@+id/main_logo"
         style="@style/MainLogo"
+        android:contentDescription="@string/main_logo"
         android:layout_marginLeft="@dimen/standardSpacing"
         android:layout_marginRight="@dimen/standardSpacing" />
 

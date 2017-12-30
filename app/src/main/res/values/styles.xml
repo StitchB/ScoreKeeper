@@ -12,7 +12,6 @@
     <style name="MainBackground">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:contentDescription">@string/background</item>
         <item name="android:scaleType">centerCrop</item>
         <item name="android:src">@drawable/bg</item>
     </style>
@@ -20,7 +19,6 @@
     <style name="MainLogo">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:contentDescription">@string/main_logo</item>
         <item name="android:src">@drawable/main_logo</item>
     </style>
 
@@ -59,7 +57,6 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_centerVertical">true</item>
-        <item name="android:contentDescription">@string/character_image</item>
         <item name="android:src">@drawable/character_1</item>
     </style>
 

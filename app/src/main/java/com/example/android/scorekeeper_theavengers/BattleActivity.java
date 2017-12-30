@@ -590,7 +590,7 @@ public class BattleActivity extends AppCompatActivity {
         value.put("name", "Captain America");
         value.put("attack_1", "Low Strike");
         value.put("attack_2", "Vigorous Attack");
-        value.put("attack_3", "Agressive Attitude");
+        value.put("attack_3", "Aggressive Attitude");
         value.put("attack_4", "Shield Throw");
         characters.put("5", value);
     }

@@ -7,7 +7,8 @@
     <!-- Main background -->
     <ImageView
         android:id="@+id/background"
-        style="@style/MainBackground" />
+        style="@style/MainBackground"
+        android:contentDescription="@string/background" />
 
     <!-- Main Heading/Select First Fighter text -->
     <TextView
@@ -19,6 +20,7 @@
     <ImageView
         android:id="@+id/character_image"
         style="@style/CharacterImage"
+        android:contentDescription="@string/character_image"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="@dimen/doubleSpacing"
         android:layout_marginBottom="@dimen/doubleSpacing" />
