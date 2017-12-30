@@ -21,11 +21,6 @@ public class SelectArenaActivity extends AppCompatActivity implements OnClickLis
     //Variables to keep first selected characters
     private int selectedCharacter1, selectedCharacter2;
 
-    //Used to keep activity state
-    private static final String STATE_LAST_ARENA_COUNTER = "lastArenaCounter";
-    private static final String STATE_SELECTED_CHARACTER_1 = "selectedCharacter1";
-    private static final String STATE_SELECTED_CHARACTER_2 = "selectedCharacter2";
-
     //Arena image view
     private ImageView arena_image;
 
@@ -68,9 +63,9 @@ public class SelectArenaActivity extends AppCompatActivity implements OnClickLis
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         //Save the state
-        savedInstanceState.putInt(STATE_LAST_ARENA_COUNTER, lastArenaCounter);
-        savedInstanceState.putInt(STATE_SELECTED_CHARACTER_1, selectedCharacter1);
-        savedInstanceState.putInt(STATE_SELECTED_CHARACTER_2, selectedCharacter2);
+        savedInstanceState.putInt(Constants.STATE_LAST_ARENA_COUNTER, lastArenaCounter);
+        savedInstanceState.putInt(Constants.STATE_SELECTED_CHARACTER_1, selectedCharacter1);
+        savedInstanceState.putInt(Constants.STATE_SELECTED_CHARACTER_2, selectedCharacter2);
 
         //Call the superclass so it can save the view hierarchy state
         super.onSaveInstanceState(savedInstanceState);
@@ -86,9 +81,9 @@ public class SelectArenaActivity extends AppCompatActivity implements OnClickLis
         super.onRestoreInstanceState(savedInstanceState);
 
         //Restore the state from saved instance
-        lastArenaCounter = savedInstanceState.getInt(STATE_LAST_ARENA_COUNTER);
-        selectedCharacter1 = savedInstanceState.getInt(STATE_SELECTED_CHARACTER_1);
-        selectedCharacter2 = savedInstanceState.getInt(STATE_SELECTED_CHARACTER_2);
+        lastArenaCounter = savedInstanceState.getInt(Constants.STATE_LAST_ARENA_COUNTER);
+        selectedCharacter1 = savedInstanceState.getInt(Constants.STATE_SELECTED_CHARACTER_1);
+        selectedCharacter2 = savedInstanceState.getInt(Constants.STATE_SELECTED_CHARACTER_2);
 
         //Show correct arena image
         int arenaId = getResources().getIdentifier("arena_" + lastArenaCounter + "_small", "drawable", getPackageName());

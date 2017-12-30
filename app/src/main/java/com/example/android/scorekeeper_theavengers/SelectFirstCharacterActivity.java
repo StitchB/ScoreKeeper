@@ -21,10 +21,6 @@ public class SelectFirstCharacterActivity extends AppCompatActivity implements O
     //Variable to keep first selected character
     private static int selectedCharacter1;
 
-    //Used to keep activity state
-    private static final String STATE_LAST_CHARACTER_COUNTER = "lastCharacterCounter";
-    private static final String STATE_SELECTED_CHARACTER_1 = "selectedCharacter1";
-
     //Character image view
     private ImageView character_image;
 
@@ -60,8 +56,8 @@ public class SelectFirstCharacterActivity extends AppCompatActivity implements O
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         //Save the state
-        savedInstanceState.putInt(STATE_LAST_CHARACTER_COUNTER, lastCharacterCounter);
-        savedInstanceState.putInt(STATE_SELECTED_CHARACTER_1, selectedCharacter1);
+        savedInstanceState.putInt(Constants.STATE_LAST_CHARACTER_COUNTER, lastCharacterCounter);
+        savedInstanceState.putInt(Constants.STATE_SELECTED_CHARACTER_1, selectedCharacter1);
 
         //Call the superclass so it can save the view hierarchy state
         super.onSaveInstanceState(savedInstanceState);
@@ -77,8 +73,8 @@ public class SelectFirstCharacterActivity extends AppCompatActivity implements O
         super.onRestoreInstanceState(savedInstanceState);
 
         //Restore the state from saved instance
-        lastCharacterCounter = savedInstanceState.getInt(STATE_LAST_CHARACTER_COUNTER);
-        selectedCharacter1 = savedInstanceState.getInt(STATE_SELECTED_CHARACTER_1);
+        lastCharacterCounter = savedInstanceState.getInt(Constants.STATE_LAST_CHARACTER_COUNTER);
+        selectedCharacter1 = savedInstanceState.getInt(Constants.STATE_SELECTED_CHARACTER_1);
 
         //Show correct character image
         int characterId = getResources().getIdentifier("character_" + lastCharacterCounter, "drawable", getPackageName());

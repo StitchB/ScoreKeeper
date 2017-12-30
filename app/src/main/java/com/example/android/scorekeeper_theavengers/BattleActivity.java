@@ -27,14 +27,6 @@ import java.util.Random;
 
 public class BattleActivity extends AppCompatActivity {
 
-    //Constants for maximum of 'Energy' & 'Special' Bars
-    private static final int MAX_ENERGY = 100;
-    private static final int MAX_SPECIAL = 80;
-
-    //Constants for minimum & maximum damage values inflicted by 'Special' attack
-    private static final int MIN_RANDOM = 10;
-    private static final int MAX_RANDOM = 30;
-
     //Variables to keep first selected characters
     private int selectedCharacter1, selectedCharacter2;
 
@@ -56,8 +48,8 @@ public class BattleActivity extends AppCompatActivity {
     private ProgressBar specialBarFighter2 = null;
 
     //'Energy' bars values (Set to maximum)
-    private int energyBar1Value = MAX_ENERGY;
-    private int energyBar2Value = MAX_ENERGY;
+    private int energyBar1Value = Constants.MAX_ENERGY;
+    private int energyBar2Value = Constants.MAX_ENERGY;
 
     //'Special' bars values (set to 0)
     private int specialBar1Value = 0;
@@ -69,21 +61,6 @@ public class BattleActivity extends AppCompatActivity {
 
     //Hashmap for keeping characters
     private final HashMap<String, HashMap<String, String>> characters = new HashMap<>();
-
-    //Used to keep activity state
-    private static final String STATE_SELECTED_CHARACTER_1 = "selectedCharacter1";
-    private static final String STATE_SELECTED_CHARACTER_2 = "selectedCharacter2";
-    private static final String STATE_SELECTED_ARENA = "selectedArena";
-    private static final String STATE_SCORE_FIGHTER_1 = "scoreFighter1";
-    private static final String STATE_SCORE_FIGHTER_2 = "scoreFighter2";
-    private static final String STATE_LAST_ATTACK_NO_CHARACTER_1 = "lastAttackNoCharacter1";
-    private static final String STATE_LAST_ATTACK_NO_CHARACTER_2 = "lastAttackNoCharacter2";
-    private static final String STATE_ENERGY_BAR_1_VALUE = "energyBar1Value";
-    private static final String STATE_ENERGY_BAR_2_VALUE = "energyBar2Value";
-    private static final String STATE_SPECIAL_BAR_1_VALUE = "specialBar1Value";
-    private static final String STATE_SPECIAL_BAR_2_VALUE = "specialBar2Value";
-    private static final String STATE_SPECIAL_USED_FIGHTER_1 = "specialUsedFighter1";
-    private static final String STATE_SPECIAL_USED_FIGHTER_2 = "specialUsedFighter2";
 
     //Attack button views
     private Button fighter1Attack1View, fighter1Attack2View, fighter1Attack3View, fighter1Attack4View,
@@ -155,12 +132,12 @@ public class BattleActivity extends AppCompatActivity {
         specialBarFighter1 = findViewById(R.id.fighter_1_special_bar);
         energyBarFighter2 = findViewById(R.id.fighter_2_energy_bar);
         specialBarFighter2 = findViewById(R.id.fighter_2_special_bar);
-        energyBarFighter1.setMax(MAX_ENERGY);
-        energyBarFighter1.setProgress(MAX_ENERGY);
-        energyBarFighter2.setMax(MAX_ENERGY);
-        energyBarFighter2.setProgress(MAX_ENERGY);
-        specialBarFighter1.setMax(MAX_SPECIAL);
-        specialBarFighter2.setMax(MAX_SPECIAL);
+        energyBarFighter1.setMax(Constants.MAX_ENERGY);
+        energyBarFighter1.setProgress(Constants.MAX_ENERGY);
+        energyBarFighter2.setMax(Constants.MAX_ENERGY);
+        energyBarFighter2.setProgress(Constants.MAX_ENERGY);
+        specialBarFighter1.setMax(Constants.MAX_SPECIAL);
+        specialBarFighter2.setMax(Constants.MAX_SPECIAL);
 
         //Use selected background
         int backgroundId = getResources().getIdentifier("arena_" + selectedArena, "drawable", getPackageName());
@@ -211,19 +188,19 @@ public class BattleActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         //Save the state
-        savedInstanceState.putInt(STATE_SELECTED_CHARACTER_1, selectedCharacter1);
-        savedInstanceState.putInt(STATE_SELECTED_CHARACTER_2, selectedCharacter2);
-        savedInstanceState.putInt(STATE_SELECTED_ARENA, selectedArena);
-        savedInstanceState.putInt(STATE_SCORE_FIGHTER_1, scoreFighter1);
-        savedInstanceState.putInt(STATE_SCORE_FIGHTER_2, scoreFighter2);
-        savedInstanceState.putInt(STATE_LAST_ATTACK_NO_CHARACTER_1, lastAttackNoCharacter1);
-        savedInstanceState.putInt(STATE_LAST_ATTACK_NO_CHARACTER_2, lastAttackNoCharacter2);
-        savedInstanceState.putInt(STATE_ENERGY_BAR_1_VALUE, energyBar1Value);
-        savedInstanceState.putInt(STATE_ENERGY_BAR_2_VALUE, energyBar2Value);
-        savedInstanceState.putInt(STATE_SPECIAL_BAR_1_VALUE, specialBar1Value);
-        savedInstanceState.putInt(STATE_SPECIAL_BAR_2_VALUE, specialBar2Value);
-        savedInstanceState.putBoolean(STATE_SPECIAL_USED_FIGHTER_1, specialUsedFighter1);
-        savedInstanceState.putBoolean(STATE_SPECIAL_USED_FIGHTER_2, specialUsedFighter2);
+        savedInstanceState.putInt(Constants.STATE_SELECTED_CHARACTER_1, selectedCharacter1);
+        savedInstanceState.putInt(Constants.STATE_SELECTED_CHARACTER_2, selectedCharacter2);
+        savedInstanceState.putInt(Constants.STATE_SELECTED_ARENA, selectedArena);
+        savedInstanceState.putInt(Constants.STATE_SCORE_FIGHTER_1, scoreFighter1);
+        savedInstanceState.putInt(Constants.STATE_SCORE_FIGHTER_2, scoreFighter2);
+        savedInstanceState.putInt(Constants.STATE_LAST_ATTACK_NO_CHARACTER_1, lastAttackNoCharacter1);
+        savedInstanceState.putInt(Constants.STATE_LAST_ATTACK_NO_CHARACTER_2, lastAttackNoCharacter2);
+        savedInstanceState.putInt(Constants.STATE_ENERGY_BAR_1_VALUE, energyBar1Value);
+        savedInstanceState.putInt(Constants.STATE_ENERGY_BAR_2_VALUE, energyBar2Value);
+        savedInstanceState.putInt(Constants.STATE_SPECIAL_BAR_1_VALUE, specialBar1Value);
+        savedInstanceState.putInt(Constants.STATE_SPECIAL_BAR_2_VALUE, specialBar2Value);
+        savedInstanceState.putBoolean(Constants.STATE_SPECIAL_USED_FIGHTER_1, specialUsedFighter1);
+        savedInstanceState.putBoolean(Constants.STATE_SPECIAL_USED_FIGHTER_2, specialUsedFighter2);
 
         //Call the superclass so it can save the view hierarchy state
         super.onSaveInstanceState(savedInstanceState);
@@ -239,19 +216,19 @@ public class BattleActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
 
         //Restore the state from saved instance
-        selectedCharacter1 = savedInstanceState.getInt(STATE_SELECTED_CHARACTER_1);
-        selectedCharacter2 = savedInstanceState.getInt(STATE_SELECTED_CHARACTER_2);
-        selectedArena = savedInstanceState.getInt(STATE_SELECTED_ARENA);
-        scoreFighter1 = savedInstanceState.getInt(STATE_SCORE_FIGHTER_1);
-        scoreFighter2 = savedInstanceState.getInt(STATE_SCORE_FIGHTER_2);
-        lastAttackNoCharacter1 = savedInstanceState.getInt(STATE_LAST_ATTACK_NO_CHARACTER_1);
-        lastAttackNoCharacter2 = savedInstanceState.getInt(STATE_LAST_ATTACK_NO_CHARACTER_2);
-        energyBar1Value = savedInstanceState.getInt(STATE_ENERGY_BAR_1_VALUE);
-        energyBar2Value = savedInstanceState.getInt(STATE_ENERGY_BAR_2_VALUE);
-        specialBar1Value = savedInstanceState.getInt(STATE_SPECIAL_BAR_1_VALUE);
-        specialBar2Value = savedInstanceState.getInt(STATE_SPECIAL_BAR_2_VALUE);
-        specialUsedFighter1 = savedInstanceState.getBoolean(STATE_SPECIAL_USED_FIGHTER_1);
-        specialUsedFighter2 = savedInstanceState.getBoolean(STATE_SPECIAL_USED_FIGHTER_2);
+        selectedCharacter1 = savedInstanceState.getInt(Constants.STATE_SELECTED_CHARACTER_1);
+        selectedCharacter2 = savedInstanceState.getInt(Constants.STATE_SELECTED_CHARACTER_2);
+        selectedArena = savedInstanceState.getInt(Constants.STATE_SELECTED_ARENA);
+        scoreFighter1 = savedInstanceState.getInt(Constants.STATE_SCORE_FIGHTER_1);
+        scoreFighter2 = savedInstanceState.getInt(Constants.STATE_SCORE_FIGHTER_2);
+        lastAttackNoCharacter1 = savedInstanceState.getInt(Constants.STATE_LAST_ATTACK_NO_CHARACTER_1);
+        lastAttackNoCharacter2 = savedInstanceState.getInt(Constants.STATE_LAST_ATTACK_NO_CHARACTER_2);
+        energyBar1Value = savedInstanceState.getInt(Constants.STATE_ENERGY_BAR_1_VALUE);
+        energyBar2Value = savedInstanceState.getInt(Constants.STATE_ENERGY_BAR_2_VALUE);
+        specialBar1Value = savedInstanceState.getInt(Constants.STATE_SPECIAL_BAR_1_VALUE);
+        specialBar2Value = savedInstanceState.getInt(Constants.STATE_SPECIAL_BAR_2_VALUE);
+        specialUsedFighter1 = savedInstanceState.getBoolean(Constants.STATE_SPECIAL_USED_FIGHTER_1);
+        specialUsedFighter2 = savedInstanceState.getBoolean(Constants.STATE_SPECIAL_USED_FIGHTER_2);
 
         //Set correct scores
         fighter1ScoreView.setText(String.valueOf(scoreFighter1));
@@ -373,7 +350,7 @@ public class BattleActivity extends AppCompatActivity {
      */
     private void showSpecialAttackButton(boolean firstFighter, boolean onRestoreInstanceState) {
         //If enough points gained to activate special for an opponent of the current fighter & special wasn't used yet by that opponent
-        if ((firstFighter ? specialBar2Value : specialBar1Value) >= MAX_SPECIAL &&
+        if ((firstFighter ? specialBar2Value : specialBar1Value) >= Constants.MAX_SPECIAL &&
              (!(firstFighter ? specialUsedFighter2 : specialUsedFighter1) || onRestoreInstanceState)) {
 
             //Set value for 'Special Used' flags to true to not allow using special twice during one fight
@@ -511,11 +488,11 @@ public class BattleActivity extends AppCompatActivity {
         startFighterTransition(false, 0);
 
         //Reset progress bars
-        energyBar1Value = energyBar2Value = MAX_ENERGY;
+        energyBar1Value = energyBar2Value = Constants.MAX_ENERGY;
         specialBar1Value = specialBar2Value = 0;
-        energyBarFighter1.setProgress(MAX_ENERGY);
+        energyBarFighter1.setProgress(Constants.MAX_ENERGY);
         specialBarFighter1.setProgress(0);
-        energyBarFighter2.setProgress(MAX_ENERGY);
+        energyBarFighter2.setProgress(Constants.MAX_ENERGY);
         specialBarFighter2.setProgress(0);
 
         //Set 'Special Used' flags to false
@@ -676,7 +653,7 @@ public class BattleActivity extends AppCompatActivity {
      */
     private static int getRandomAttackValue() {
         Random r = new Random();
-        return r.nextInt((MAX_RANDOM - MIN_RANDOM) + 1) + MIN_RANDOM;
+        return r.nextInt((Constants.MAX_RANDOM - Constants.MIN_RANDOM) + 1) + Constants.MIN_RANDOM;
     }
 
     /**
