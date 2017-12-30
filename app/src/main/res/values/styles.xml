@@ -78,7 +78,6 @@
         <item name="android:shadowDx">@dimen/shadowOffset</item>
         <item name="android:shadowDy">@dimen/shadowOffset</item>
         <item name="android:shadowRadius">@dimen/shadowRadius</item>
-        <item name="android:text"></item>
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">@dimen/fighterNameTextSize</item>
     </style>
@@ -137,7 +136,6 @@
         <item name="android:shadowDx">@dimen/shadowOffset</item>
         <item name="android:shadowDy">@dimen/shadowOffset</item>
         <item name="android:shadowRadius">@dimen/shadowRadius</item>
-        <item name="android:text"></item>
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">@dimen/victoriousCharacterTextSize</item>
     </style>
