@@ -30,6 +30,7 @@ public class StartScreenActivity extends AppCompatActivity {
             // Start SelectFirstCharacterActivity.class
             Intent myIntent = new Intent(StartScreenActivity.this, SelectFirstCharacterActivity.class);
             startActivity(myIntent);
+            finish();
             }
         });
     }
