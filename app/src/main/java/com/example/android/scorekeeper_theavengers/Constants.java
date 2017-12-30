@@ -26,4 +26,11 @@ interface Constants {
     String STATE_SPECIAL_BAR_2_VALUE = "specialBar2Value";
     String STATE_SPECIAL_USED_FIGHTER_1 = "specialUsedFighter1";
     String STATE_SPECIAL_USED_FIGHTER_2 = "specialUsedFighter2";
+
+    //Hashmap heys
+    String CHARACTER_KEY_NAME = "name";
+    String CHARACTER_KEY_ATTACK_1 = "attack_1";
+    String CHARACTER_KEY_ATTACK_2 = "attack_2";
+    String CHARACTER_KEY_ATTACK_3 = "attack_3";
+    String CHARACTER_KEY_ATTACK_4 = "attack_4";
 }

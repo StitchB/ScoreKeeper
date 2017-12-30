@@ -382,7 +382,7 @@ public class BattleActivity extends AppCompatActivity {
 
             //Show message with the winner name
             String character1Id = String.valueOf(energyBar2Value <= 0 ? selectedCharacter1 : selectedCharacter2);
-            victoryNameView.setText(String.valueOf(characters.get(character1Id).get("name")) + " is the winner!");
+            victoryNameView.setText(String.valueOf(characters.get(character1Id).get(Constants.CHARACTER_KEY_NAME)) + " is the winner!");
 
             //Show correct winner image
             int firstFighterId = getResources().getIdentifier("victory_" + (energyBar2Value <= 0 ? selectedCharacter1 : selectedCharacter2), "drawable", getPackageName());
@@ -528,47 +528,47 @@ public class BattleActivity extends AppCompatActivity {
     private void setCharactersData() {
         //Thor
         HashMap<String, String> value = new HashMap<>();
-        value.put("name", "Thor");
-        value.put("attack_1", "Mjolnir Hit");
-        value.put("attack_2", "Mjolnir Smash");
-        value.put("attack_3", "Might of Mjolnir");
-        value.put("attack_4", "Thunderstruck");
+        value.put(Constants.CHARACTER_KEY_NAME, "Thor");
+        value.put(Constants.CHARACTER_KEY_ATTACK_1, "Mjolnir Hit");
+        value.put(Constants.CHARACTER_KEY_ATTACK_2, "Mjolnir Smash");
+        value.put(Constants.CHARACTER_KEY_ATTACK_3, "Might of Mjolnir");
+        value.put(Constants.CHARACTER_KEY_ATTACK_4, "Thunderstruck");
         characters.put("1", value);
 
         //Black Widow
         value = new HashMap<>();
-        value.put("name", "Black Widow");
-        value.put("attack_1", "Perfect Punch");
-        value.put("attack_2", "Unexpected Attack");
-        value.put("attack_3", "Power Sticks");
-        value.put("attack_4", "Widow's Revenge");
+        value.put(Constants.CHARACTER_KEY_NAME, "Black Widow");
+        value.put(Constants.CHARACTER_KEY_ATTACK_1, "Perfect Punch");
+        value.put(Constants.CHARACTER_KEY_ATTACK_2, "Unexpected Attack");
+        value.put(Constants.CHARACTER_KEY_ATTACK_3, "Power Sticks");
+        value.put(Constants.CHARACTER_KEY_ATTACK_4, "Widow's Revenge");
         characters.put("2", value);
 
         //Iron Man
         value = new HashMap<>();
-        value.put("name", "Iron Man");
-        value.put("attack_1", "Light Beam");
-        value.put("attack_2", "The Charge");
-        value.put("attack_3", "Jet Propelled");
-        value.put("attack_4", "Full Power");
+        value.put(Constants.CHARACTER_KEY_NAME, "Iron Man");
+        value.put(Constants.CHARACTER_KEY_ATTACK_1, "Light Beam");
+        value.put(Constants.CHARACTER_KEY_ATTACK_2, "The Charge");
+        value.put(Constants.CHARACTER_KEY_ATTACK_3, "Jet Propelled");
+        value.put(Constants.CHARACTER_KEY_ATTACK_4, "Full Power");
         characters.put("3", value);
 
         //Hulk
         value = new HashMap<>();
-        value.put("name", "Hulk");
-        value.put("attack_1", "Strong Punch");
-        value.put("attack_2", "Angry Fists");
-        value.put("attack_3", "Monster Jump");
-        value.put("attack_4", "Hulk Smash");
+        value.put(Constants.CHARACTER_KEY_NAME, "Hulk");
+        value.put(Constants.CHARACTER_KEY_ATTACK_1, "Strong Punch");
+        value.put(Constants.CHARACTER_KEY_ATTACK_2, "Angry Fists");
+        value.put(Constants.CHARACTER_KEY_ATTACK_3, "Monster Jump");
+        value.put(Constants.CHARACTER_KEY_ATTACK_4, "Hulk Smash");
         characters.put("4", value);
 
         //Captain America
         value = new HashMap<>();
-        value.put("name", "Captain America");
-        value.put("attack_1", "Low Strike");
-        value.put("attack_2", "Vigorous Attack");
-        value.put("attack_3", "Aggressive Attitude");
-        value.put("attack_4", "Shield Throw");
+        value.put(Constants.CHARACTER_KEY_NAME, "Captain America");
+        value.put(Constants.CHARACTER_KEY_ATTACK_1, "Low Strike");
+        value.put(Constants.CHARACTER_KEY_ATTACK_2, "Vigorous Attack");
+        value.put(Constants.CHARACTER_KEY_ATTACK_3, "Aggressive Attitude");
+        value.put(Constants.CHARACTER_KEY_ATTACK_4, "Shield Throw");
         characters.put("5", value);
     }
 
@@ -581,42 +581,42 @@ public class BattleActivity extends AppCompatActivity {
     private void showCharacterData(boolean firstFighter, String characterId) {
         //Character Name
         if(firstFighter) {
-            fighter1NameView.setText(String.valueOf(characters.get(characterId).get("name")));
+            fighter1NameView.setText(String.valueOf(characters.get(characterId).get(Constants.CHARACTER_KEY_NAME)));
         }
         else {
-            fighter2NameView.setText(String.valueOf(characters.get(characterId).get("name")));
+            fighter2NameView.setText(String.valueOf(characters.get(characterId).get(Constants.CHARACTER_KEY_NAME)));
         }
 
         //Attack 1 Name
         if(firstFighter) {
-            fighter1Attack1View.setText(String.valueOf(characters.get(characterId).get("attack_1")));
+            fighter1Attack1View.setText(String.valueOf(characters.get(characterId).get(Constants.CHARACTER_KEY_ATTACK_1)));
         }
         else {
-            fighter2Attack1View.setText(String.valueOf(characters.get(characterId).get("attack_1")));
+            fighter2Attack1View.setText(String.valueOf(characters.get(characterId).get(Constants.CHARACTER_KEY_ATTACK_1)));
         }
 
         //Attack 2 Name
         if(firstFighter) {
-            fighter1Attack2View.setText(String.valueOf(characters.get(characterId).get("attack_2")));
+            fighter1Attack2View.setText(String.valueOf(characters.get(characterId).get(Constants.CHARACTER_KEY_ATTACK_2)));
         }
         else {
-            fighter2Attack2View.setText(String.valueOf(characters.get(characterId).get("attack_2")));
+            fighter2Attack2View.setText(String.valueOf(characters.get(characterId).get(Constants.CHARACTER_KEY_ATTACK_2)));
         }
 
         //Attack 3 Name
         if(firstFighter) {
-            fighter1Attack3View.setText(String.valueOf(characters.get(characterId).get("attack_3")));
+            fighter1Attack3View.setText(String.valueOf(characters.get(characterId).get(Constants.CHARACTER_KEY_ATTACK_3)));
         }
         else {
-            fighter2Attack3View.setText(String.valueOf(characters.get(characterId).get("attack_3")));
+            fighter2Attack3View.setText(String.valueOf(characters.get(characterId).get(Constants.CHARACTER_KEY_ATTACK_3)));
         }
 
         //Attack 4 Name
         if(firstFighter) {
-            fighter1Attack4View.setText(String.valueOf(characters.get(characterId).get("attack_4")));
+            fighter1Attack4View.setText(String.valueOf(characters.get(characterId).get(Constants.CHARACTER_KEY_ATTACK_4)));
         }
         else {
-            fighter2Attack4View.setText(String.valueOf(characters.get(characterId).get("attack_4")));
+            fighter2Attack4View.setText(String.valueOf(characters.get(characterId).get(Constants.CHARACTER_KEY_ATTACK_4)));
         }
     }
 
