@@ -7,41 +7,23 @@
     <!-- Main background -->
     <ImageView
         android:id="@+id/background"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/background"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg" />
+        style="@style/MainBackground" />
 
     <!-- Main Heading/Select Second Fighter text -->
     <TextView
         android:id="@+id/main_heading"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/selectionHeadingMargin"
-        android:layout_marginTop="@dimen/selectionHeadingMargin"
-        android:fontFamily="@font/american_captain"
-        android:shadowColor="@color/shadowColor"
-        android:shadowDx="@dimen/shadowOffset"
-        android:shadowDy="@dimen/shadowOffset"
-        android:shadowRadius="@dimen/shadowRadius"
-        android:text="@string/select_fighter_2"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/headingTextSize" />
+        style="@style/MainHeading"
+        android:text="@string/select_fighter_2" />
 
     <!-- Character Image -->
     <ImageView
         android:id="@+id/character_image"
-        style="@style/WrapContent"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:contentDescription="@string/character_image"
-        android:src="@drawable/character_1" />
+        style="@style/CharacterImage" />
 
     <!-- Button for changing to previous character -->
     <ImageButton
         android:id="@+id/button_prev"
-        style="@style/ActionButton"
+        style="@style/ActionButtonWithVerticalMargin"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="@dimen/standardSpacing"
@@ -53,7 +35,7 @@
     <!-- Button for selecting first fighter -->
     <ImageButton
         android:id="@+id/button_select"
-        style="@style/ActionButton"
+        style="@style/ActionButtonWithVerticalMargin"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/standardSpacing"
@@ -64,7 +46,7 @@
     <!-- Button for changing to next character -->
     <ImageButton
         android:id="@+id/button_next"
-        style="@style/ActionButton"
+        style="@style/ActionButtonWithVerticalMargin"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="@dimen/standardSpacing"

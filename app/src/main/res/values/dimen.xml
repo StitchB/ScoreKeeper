@@ -7,6 +7,9 @@
     <dimen name="resetTextSize">16sp</dimen>
 
     <dimen name="standardSpacing">8dp</dimen>
+    <dimen name="doubleSpacing">16dp</dimen>
+    <dimen name="tripleSpacing">24dp</dimen>
+    <dimen name="quadrupleSpacing">32dp</dimen>
     <dimen name="attackButtonHorizontalMargin">16dp</dimen>
 
     <dimen name="selectionHeadingMargin">24dp</dimen>

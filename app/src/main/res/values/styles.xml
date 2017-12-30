@@ -9,10 +9,154 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="MainBackground">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:contentDescription">@string/background</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:src">@drawable/bg</item>
+    </style>
+
+    <style name="MainLogo">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:contentDescription">@string/main_logo</item>
+        <item name="android:src">@drawable/main_logo</item>
+    </style>
+
+    <style name="MainHeading">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/selectionHeadingMargin</item>
+        <item name="android:layout_marginTop">@dimen/selectionHeadingMargin</item>
+        <item name="android:fontFamily">@font/american_captain</item>
+        <item name="android:shadowColor">@color/shadowColor</item>
+        <item name="android:shadowDx">@dimen/shadowOffset</item>
+        <item name="android:shadowDy">@dimen/shadowOffset</item>
+        <item name="android:shadowRadius">@dimen/shadowRadius</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/headingTextSize</item>
+    </style>
+
     <style name="ActionButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:padding">0dp</item>
+    </style>
+
+    <style name="ActionButtonWithVerticalMargin">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_marginTop">@dimen/standardSpacing</item>
+        <item name="android:layout_marginBottom">@dimen/standardSpacing</item>
+    </style>
+
+    <style name="CharacterImage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:contentDescription">@string/character_image</item>
+        <item name="android:src">@drawable/character_1</item>
+    </style>
+
+    <style name="ArenaImage">
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:contentDescription">@string/arena_image</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:src">@drawable/arena_1_small</item>
+    </style>
+
+    <style name="FighterName">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/american_captain</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">@dimen/standardSpacing</item>
+        <item name="android:paddingBottom">@dimen/standardSpacing</item>
+        <item name="android:shadowColor">@color/shadowColor</item>
+        <item name="android:shadowDx">@dimen/shadowOffset</item>
+        <item name="android:shadowDy">@dimen/shadowOffset</item>
+        <item name="android:shadowRadius">@dimen/shadowRadius</item>
+        <item name="android:text"></item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/fighterNameTextSize</item>
+    </style>
+
+    <style name="FighterImage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="FighterScore">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/american_captain</item>
+        <item name="android:gravity">center</item>
+        <item name="android:shadowColor">@color/scoreShadowColor</item>
+        <item name="android:shadowDx">@dimen/shadowOffset</item>
+        <item name="android:shadowDy">@dimen/shadowOffset</item>
+        <item name="android:shadowRadius">@dimen/shadowRadius</item>
+        <item name="android:text">0</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/fighterScoreTextSize</item>
+    </style>
+
+    <style name="AttackButton">
+        <item name="android:background">@drawable/button_bg_rounded_corners</item>
+        <item name="android:fontFamily">@font/american_captain</item>
+    </style>
+
+    <style name="VictoryCardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/victoryCardHeight</item>
+        <item name="android:layout_marginTop">@dimen/victoryCardMarginTop</item>
+        <item name="android:layout_marginLeft">@dimen/standardSpacing</item>
+        <item name="android:layout_marginRight">@dimen/standardSpacing</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="VictoryImage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/victoryCardHeight</item>
+        <item name="android:contentDescription">@string/victory</item>
+        <item name="android:src">@drawable/victory_1</item>
+    </style>
+
+    <style name="VictoryCharacterName">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_above">@id/reset_score</item>
+        <item name="android:layout_marginBottom">@dimen/victoriousCharacterMarginBottom</item>
+        <item name="android:fontFamily">@font/american_captain</item>
+        <item name="android:gravity">center</item>
+        <item name="android:shadowColor">@color/victoriousCharacterShadowColor</item>
+        <item name="android:shadowDx">@dimen/shadowOffset</item>
+        <item name="android:shadowDy">@dimen/shadowOffset</item>
+        <item name="android:shadowRadius">@dimen/shadowRadius</item>
+        <item name="android:text"></item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/victoriousCharacterTextSize</item>
+    </style>
+
+    <style name="ResetButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginBottom">@dimen/resetMarginBottom</item>
+        <item name="android:layout_marginLeft">@dimen/attackButtonHorizontalMargin</item>
+        <item name="android:layout_marginRight">@dimen/attackButtonHorizontalMargin</item>
+        <item name="android:background">@drawable/button_bg_rounded_corners</item>
+        <item name="android:fontFamily">@font/american_captain</item>
+        <item name="android:onClick">resetFight</item>
+        <item name="android:text">@string/fight_again</item>
+        <item name="android:textSize">@dimen/resetTextSize</item>
     </style>
 </resources>

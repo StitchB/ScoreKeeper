@@ -7,21 +7,14 @@
     <!-- Main background -->
     <ImageView
         android:id="@+id/background"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/background"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg" />
+        style="@style/MainBackground" />
 
     <!-- Main Logo -->
     <ImageView
         android:id="@+id/main_logo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/MainLogo"
         android:layout_marginLeft="@dimen/standardSpacing"
-        android:layout_marginRight="@dimen/standardSpacing"
-        android:contentDescription="@string/main_logo"
-        android:src="@drawable/main_logo" />
+        android:layout_marginRight="@dimen/standardSpacing" />
 
     <!-- Button for continuing to first character selection -->
     <ImageButton

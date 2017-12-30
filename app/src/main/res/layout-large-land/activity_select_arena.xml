@@ -8,39 +8,23 @@
     <!-- Main background -->
     <ImageView
         android:id="@+id/background"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/background"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg" />
+        style="@style/MainBackground" />
 
     <!-- Main Heading/Select Arena text -->
     <TextView
         android:id="@+id/main_heading"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/selectionHeadingMargin"
-        android:layout_marginTop="@dimen/selectionHeadingMargin"
-        android:fontFamily="@font/american_captain"
-        android:shadowColor="@color/shadowColor"
-        android:shadowDx="@dimen/shadowOffset"
-        android:shadowDy="@dimen/shadowOffset"
-        android:shadowRadius="@dimen/shadowRadius"
-        android:text="@string/select_arena"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/headingTextSize" />
+        style="@style/MainHeading"
+        android:text="@string/select_arena" />
 
     <!-- Arena Image -->
     <com.makeramen.roundedimageview.RoundedImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/arena_image"
-        style="@style/WrapContent"
+        style="@style/ArenaImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/doubleSpacing"
         android:paddingTop="@dimen/doubleSpacing"
-        android:layout_centerHorizontal="true"
-        android:contentDescription="@string/arena_image"
-        android:scaleType="centerCrop"
-        android:src="@drawable/arena_1_small"
         app:riv_border_color="@color/arenaImageBorderColor"
         app:riv_border_width="@dimen/arenaImageBorderWidth"
         app:riv_corner_radius="@dimen/standardSpacing" />
@@ -48,35 +32,29 @@
     <!-- Button for changing to previous arena -->
     <ImageButton
         android:id="@+id/button_prev"
-        style="@style/ActionButton"
+        style="@style/ActionButtonWithVerticalMargin"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="@dimen/standardSpacing"
         android:layout_marginStart="@dimen/standardSpacing"
-        android:layout_marginTop="@dimen/standardSpacing"
         android:contentDescription="@string/prev_arena_button"
         android:src="@drawable/selector_prev_button" />
 
     <!-- Button for selecting the arena -->
     <ImageButton
         android:id="@+id/button_select"
-        style="@style/ActionButton"
+        style="@style/ActionButtonWithVerticalMargin"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/standardSpacing"
-        android:layout_marginTop="@dimen/standardSpacing"
         android:contentDescription="@string/select_arena_button"
         android:src="@drawable/selector_select_button" />
 
     <!-- Button for changing to next arena -->
     <ImageButton
         android:id="@+id/button_next"
-        style="@style/ActionButton"
+        style="@style/ActionButtonWithVerticalMargin"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="@dimen/standardSpacing"
         android:layout_marginEnd="@dimen/standardSpacing"
-        android:layout_marginTop="@dimen/standardSpacing"
         android:contentDescription="@string/next_arena_button"
         android:src="@drawable/selector_next_button" />
 </RelativeLayout>

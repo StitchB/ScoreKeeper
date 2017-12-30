@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/MatchParent"
@@ -9,11 +8,7 @@
     <!-- Main background -->
     <ImageView
         android:id="@+id/background"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/background"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg" />
+        style="@style/MainBackground" />
 
     <!-- View wrapping all main elements -->
     <LinearLayout
@@ -32,19 +27,7 @@
             <!-- First fighter name -->
             <TextView
                 android:id="@+id/fighter_1_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/american_captain"
-                android:gravity="center"
-                android:paddingBottom="@dimen/standardSpacing"
-                android:paddingTop="@dimen/standardSpacing"
-                android:shadowColor="@color/shadowColor"
-                android:shadowDx="@dimen/shadowOffset"
-                android:shadowDy="@dimen/shadowOffset"
-                android:shadowRadius="@dimen/shadowRadius"
-                android:text=""
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/fighterNameTextSize" />
+                style="@style/FighterName" />
 
             <!-- First fighter 'Energy' bar -->
             <FrameLayout
@@ -82,42 +65,28 @@
             <!-- First fighter score -->
             <TextView
                 android:id="@+id/fighter_1_score"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/FighterScore"
                 android:layout_marginTop="@dimen/standardSpacing"
-                android:layout_marginBottom="@dimen/standardSpacing"
-                android:fontFamily="@font/american_captain"
-                android:gravity="center"
-                android:shadowColor="@color/scoreShadowColor"
-                android:shadowDx="@dimen/shadowOffset"
-                android:shadowDy="@dimen/shadowOffset"
-                android:shadowRadius="@dimen/shadowRadius"
-                android:text="0"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/fighterScoreTextSize" />
+                android:layout_marginBottom="@dimen/standardSpacing" />
 
             <!-- First fighter image -->
             <ImageView
                 android:id="@+id/fighter_1_image"
-                style="@style/WrapContent"
-                android:layout_gravity="center_horizontal"
+                style="@style/FighterImage"
                 android:layout_marginTop="@dimen/doubleSpacing"
                 android:layout_marginBottom="@dimen/tripleSpacing"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/fighter_1"
-                android:scaleType="centerCrop" />
+                android:contentDescription="@string/fighter_1" />
 
             <!-- First fighter 'Attack 1' button -->
             <Button
                 android:id="@+id/fighter_1_attack_1"
+                style="@style/AttackButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/tripleSpacing"
                 android:layout_marginBottom="@dimen/standardSpacing"
                 android:layout_marginLeft="@dimen/attackButtonHorizontalMargin"
                 android:layout_marginRight="@dimen/attackButtonHorizontalMargin"
-                android:layout_marginTop="@dimen/tripleSpacing"
-                android:background="@drawable/button_bg_rounded_corners"
-                android:fontFamily="@font/american_captain"
                 android:onClick="addPointsForFighter"
                 android:tag="1_1"
                 android:text="@string/attack_1"
@@ -126,13 +95,12 @@
             <!-- First fighter 'Attack 2' button -->
             <Button
                 android:id="@+id/fighter_1_attack_2"
+                style="@style/AttackButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/standardSpacing"
                 android:layout_marginLeft="@dimen/attackButtonHorizontalMargin"
                 android:layout_marginRight="@dimen/attackButtonHorizontalMargin"
-                android:background="@drawable/button_bg_rounded_corners"
-                android:fontFamily="@font/american_captain"
                 android:onClick="addPointsForFighter"
                 android:tag="1_2"
                 android:text="@string/attack_2"
@@ -141,13 +109,12 @@
             <!-- First fighter 'Attack 3' button -->
             <Button
                 android:id="@+id/fighter_1_attack_3"
+                style="@style/AttackButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/standardSpacing"
                 android:layout_marginLeft="@dimen/attackButtonHorizontalMargin"
                 android:layout_marginRight="@dimen/attackButtonHorizontalMargin"
-                android:background="@drawable/button_bg_rounded_corners"
-                android:fontFamily="@font/american_captain"
                 android:onClick="addPointsForFighter"
                 android:tag="1_3"
                 android:text="@string/attack_3"
@@ -156,12 +123,11 @@
             <!-- First fighter 'Attack 4' ('Special') button -->
             <Button
                 android:id="@+id/fighter_1_attack_4"
+                style="@style/AttackButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/attackButtonHorizontalMargin"
                 android:layout_marginRight="@dimen/attackButtonHorizontalMargin"
-                android:background="@drawable/button_bg_rounded_corners"
-                android:fontFamily="@font/american_captain"
                 android:onClick="addPointsForFighter"
                 android:tag="1_4"
                 android:text="@string/attack_4"
@@ -179,19 +145,7 @@
             <!-- Second fighter name -->
             <TextView
                 android:id="@+id/fighter_2_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/american_captain"
-                android:gravity="center"
-                android:paddingBottom="@dimen/standardSpacing"
-                android:paddingTop="@dimen/standardSpacing"
-                android:shadowColor="@color/shadowColor"
-                android:shadowDx="@dimen/shadowOffset"
-                android:shadowDy="@dimen/shadowOffset"
-                android:shadowRadius="@dimen/shadowRadius"
-                android:text=""
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/fighterNameTextSize" />
+                style="@style/FighterName" />
 
             <!-- Second fighter 'Energy' bar -->
             <FrameLayout
@@ -229,42 +183,28 @@
             <!-- Second fighter score -->
             <TextView
                 android:id="@+id/fighter_2_score"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/FighterScore"
                 android:layout_marginTop="@dimen/standardSpacing"
-                android:layout_marginBottom="@dimen/standardSpacing"
-                android:fontFamily="@font/american_captain"
-                android:gravity="center"
-                android:shadowColor="@color/scoreShadowColor"
-                android:shadowDx="@dimen/shadowOffset"
-                android:shadowDy="@dimen/shadowOffset"
-                android:shadowRadius="@dimen/shadowRadius"
-                android:text="0"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/fighterScoreTextSize" />
+                android:layout_marginBottom="@dimen/standardSpacing" />
 
             <!-- Second fighter image -->
             <ImageView
                 android:id="@+id/fighter_2_image"
-                style="@style/WrapContent"
-                android:layout_gravity="center_horizontal"
+                style="@style/FighterImage"
                 android:layout_marginTop="@dimen/doubleSpacing"
                 android:layout_marginBottom="@dimen/tripleSpacing"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/fighter_2"
-                android:scaleType="centerCrop" />
+                android:contentDescription="@string/fighter_2" />
 
             <!-- Second fighter 'Attack 1' button -->
             <Button
                 android:id="@+id/fighter_2_attack_1"
+                style="@style/AttackButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/tripleSpacing"
                 android:layout_marginBottom="@dimen/standardSpacing"
                 android:layout_marginLeft="@dimen/attackButtonHorizontalMargin"
                 android:layout_marginRight="@dimen/attackButtonHorizontalMargin"
-                android:layout_marginTop="@dimen/tripleSpacing"
-                android:background="@drawable/button_bg_rounded_corners"
-                android:fontFamily="@font/american_captain"
                 android:onClick="addPointsForFighter"
                 android:tag="2_1"
                 android:text="@string/attack_1"
@@ -273,13 +213,12 @@
             <!-- Second fighter 'Attack 2' button -->
             <Button
                 android:id="@+id/fighter_2_attack_2"
+                style="@style/AttackButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/standardSpacing"
                 android:layout_marginLeft="@dimen/attackButtonHorizontalMargin"
                 android:layout_marginRight="@dimen/attackButtonHorizontalMargin"
-                android:background="@drawable/button_bg_rounded_corners"
-                android:fontFamily="@font/american_captain"
                 android:onClick="addPointsForFighter"
                 android:tag="2_2"
                 android:text="@string/attack_2"
@@ -288,13 +227,12 @@
             <!-- Second fighter 'Attack 3' button -->
             <Button
                 android:id="@+id/fighter_2_attack_3"
+                style="@style/AttackButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/standardSpacing"
                 android:layout_marginLeft="@dimen/attackButtonHorizontalMargin"
                 android:layout_marginRight="@dimen/attackButtonHorizontalMargin"
-                android:background="@drawable/button_bg_rounded_corners"
-                android:fontFamily="@font/american_captain"
                 android:onClick="addPointsForFighter"
                 android:tag="2_3"
                 android:text="@string/attack_3"
@@ -303,12 +241,11 @@
             <!-- Second fighter 'Attack 4' ('Special') button -->
             <Button
                 android:id="@+id/fighter_2_attack_4"
+                style="@style/AttackButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/attackButtonHorizontalMargin"
                 android:layout_marginRight="@dimen/attackButtonHorizontalMargin"
-                android:background="@drawable/button_bg_rounded_corners"
-                android:fontFamily="@font/american_captain"
                 android:onClick="addPointsForFighter"
                 android:tag="2_4"
                 android:text="@string/attack_4"
@@ -320,12 +257,7 @@
     <!-- Victory card view -->
     <android.support.v7.widget.CardView
         android:id="@+id/victory_card_view"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/victoryCardHeight"
-        android:layout_marginLeft="@dimen/standardSpacing"
-        android:layout_marginRight="@dimen/standardSpacing"
-        android:layout_marginTop="@dimen/victoryCardMarginTop"
-        android:visibility="gone"
+        style="@style/VictoryCardView"
         card_view:cardBackgroundColor="@android:color/transparent"
         card_view:cardElevation="0dp"
         card_view:cardMaxElevation="0dp"
@@ -340,44 +272,19 @@
             <com.makeramen.roundedimageview.RoundedImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/victory_image"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/victoryCardHeight"
-                android:contentDescription="@string/victory"
-                android:scaleType="fitCenter"
-                android:src="@drawable/victory_1"
-                app:riv_corner_radius="@dimen/standardSpacing" />
+                style="@style/VictoryImage"
+                app:riv_corner_radius="@dimen/standardSpacing"
+                android:scaleType="fitCenter" />
 
             <!-- Victorious character name -->
             <TextView
                 android:id="@+id/victory_character"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@id/reset_score"
-                android:layout_marginBottom="@dimen/victoriousCharacterMarginBottom"
-                android:fontFamily="@font/american_captain"
-                android:gravity="center"
-                android:shadowColor="@color/victoriousCharacterShadowColor"
-                android:shadowDx="@dimen/shadowOffset"
-                android:shadowDy="@dimen/shadowOffset"
-                android:shadowRadius="@dimen/shadowRadius"
-                android:text=""
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/victoriousCharacterTextSize" />
+                style="@style/VictoryCharacterName" />
 
             <!-- Reset score button -->
             <Button
                 android:id="@+id/reset_score"
-                style="@style/WrapContent"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/resetMarginBottom"
-                android:layout_marginLeft="@dimen/attackButtonHorizontalMargin"
-                android:layout_marginRight="@dimen/attackButtonHorizontalMargin"
-                android:background="@drawable/button_bg_rounded_corners"
-                android:fontFamily="@font/american_captain"
-                android:onClick="resetFight"
-                android:text="@string/fight_again"
-                android:textSize="@dimen/resetTextSize" />
+                style="@style/ResetButton" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
