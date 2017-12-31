@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.view.View.OnClickListener;
 
@@ -22,7 +21,7 @@ public class SelectArenaActivity extends AppCompatActivity implements OnClickLis
     private int selectedCharacter1, selectedCharacter2;
 
     //Arena image view
-    private ImageView arena_image;
+    private ImageView arenaImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +33,30 @@ public class SelectArenaActivity extends AppCompatActivity implements OnClickLis
         //Set 'activity_select_arena' as a main design file
         setContentView(R.layout.activity_select_arena);
 
+        //Set images using Glide
+        //Background
+        ImageView backgroundImage = findViewById(R.id.background);
+        GlideApp.with(this)
+                .load(R.drawable.bg)
+                .error(R.drawable.error)
+                .into(backgroundImage);
+        //'Previous', 'Select', 'Next' button images
+        ImageView buttonPrev = findViewById(R.id.button_prev);
+        GlideApp.with(this)
+                .load(R.drawable.selector_prev_button)
+                .error(R.drawable.error)
+                .into(buttonPrev);
+        ImageView buttonSelect = findViewById(R.id.button_select);
+        GlideApp.with(this)
+                .load(R.drawable.selector_select_button)
+                .error(R.drawable.error)
+                .into(buttonSelect);
+        ImageView buttonNext = findViewById(R.id.button_next);
+        GlideApp.with(this)
+                .load(R.drawable.selector_next_button)
+                .error(R.drawable.error)
+                .into(buttonNext);
+
         //Get data set by previous activity
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -41,18 +64,13 @@ public class SelectArenaActivity extends AppCompatActivity implements OnClickLis
             selectedCharacter2 = extras.getInt("SELECTED_CHARACTER_2");
         }
 
-        //Image buttons
-        ImageButton buttonPrev = findViewById(R.id.button_prev);
-        ImageButton buttonNext = findViewById(R.id.button_next);
-        ImageButton buttonSelect = findViewById(R.id.button_select);
-
         //Set on click listener events for buttons
         buttonPrev.setOnClickListener(this);
         buttonNext.setOnClickListener(this);
         buttonSelect.setOnClickListener(this);
 
         //Arena image view
-        arena_image = findViewById(R.id.arena_image);
+        arenaImage = findViewById(R.id.arena_image);
     }
 
     /**
@@ -87,7 +105,7 @@ public class SelectArenaActivity extends AppCompatActivity implements OnClickLis
 
         //Show correct arena image
         int arenaId = getResources().getIdentifier("arena_" + lastArenaCounter + "_small", "drawable", getPackageName());
-        arena_image.setImageResource(arenaId);
+        arenaImage.setImageResource(arenaId);
     }
 
     @Override
@@ -167,7 +185,7 @@ public class SelectArenaActivity extends AppCompatActivity implements OnClickLis
         //Apply transition into main image view & change arena
         TransitionDrawable mainImageTransition = new TransitionDrawable(backgrounds);
 
-        arena_image.setImageDrawable(mainImageTransition);
+        arenaImage.setImageDrawable(mainImageTransition);
     }
 
     /**

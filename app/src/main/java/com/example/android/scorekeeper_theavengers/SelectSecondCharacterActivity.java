@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.view.View.OnClickListener;
 
@@ -21,8 +20,8 @@ public class SelectSecondCharacterActivity extends AppCompatActivity implements 
     //Variables to keep selected character
     private int selectedCharacter1, selectedCharacter2;
 
-    //Character image view
-    private ImageView character_image;
+    //Image views
+    private ImageView characterImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +33,30 @@ public class SelectSecondCharacterActivity extends AppCompatActivity implements 
         //Set 'activity_select_second_character' as a main design file
         setContentView(R.layout.activity_select_second_character);
 
+        //Set images using Glide
+        //Background
+        ImageView backgroundImage = findViewById(R.id.background);
+        GlideApp.with(this)
+                .load(R.drawable.bg)
+                .error(R.drawable.error)
+                .into(backgroundImage);
+        //'Previous', 'Select', 'Next' button images
+        ImageView buttonPrev = findViewById(R.id.button_prev);
+        GlideApp.with(this)
+                .load(R.drawable.selector_prev_button)
+                .error(R.drawable.error)
+                .into(buttonPrev);
+        ImageView buttonSelect = findViewById(R.id.button_select);
+        GlideApp.with(this)
+                .load(R.drawable.selector_select_button)
+                .error(R.drawable.error)
+                .into(buttonSelect);
+        ImageView buttonNext = findViewById(R.id.button_next);
+        GlideApp.with(this)
+                .load(R.drawable.selector_next_button)
+                .error(R.drawable.error)
+                .into(buttonNext);
+
         //Get data set by previous activity
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -41,20 +64,15 @@ public class SelectSecondCharacterActivity extends AppCompatActivity implements 
         }
 
         //Character image view
-        character_image = findViewById(R.id.character_image);
+        characterImage = findViewById(R.id.character_image);
 
         //If Character 1 (Thor) was selected as a first fighter
         if(selectedCharacter1 == 1)
         {
             //Show Character 2 (Black Widow) on Activity load
             lastCharacterCounter = 2;
-            character_image.setImageResource(R.drawable.character_2);
+            characterImage.setImageResource(R.drawable.character_2);
         }
-
-        //Image buttons
-        ImageButton buttonPrev = findViewById(R.id.button_prev);
-        ImageButton buttonNext = findViewById(R.id.button_next);
-        ImageButton buttonSelect = findViewById(R.id.button_select);
 
         //Set on click listener events for buttons
         buttonPrev.setOnClickListener(this);
@@ -94,7 +112,7 @@ public class SelectSecondCharacterActivity extends AppCompatActivity implements 
 
         //Show correct character image
         int characterId = getResources().getIdentifier("character_" + lastCharacterCounter, "drawable", getPackageName());
-        character_image.setImageResource(characterId);
+        characterImage.setImageResource(characterId);
     }
 
     @Override
@@ -200,7 +218,7 @@ public class SelectSecondCharacterActivity extends AppCompatActivity implements 
         //Apply transition into main image view & start animation
         TransitionDrawable mainImageTransition = new TransitionDrawable(backgrounds);
 
-        character_image.setImageDrawable(mainImageTransition);
+        characterImage.setImageDrawable(mainImageTransition);
 
         mainImageTransition.setCrossFadeEnabled(true);
         mainImageTransition.startTransition(500);

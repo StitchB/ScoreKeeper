@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class StartScreenActivity extends AppCompatActivity {
 
@@ -21,8 +21,25 @@ public class StartScreenActivity extends AppCompatActivity {
         //Set 'activity_start_screen' as a main design file
         setContentView(R.layout.activity_start_screen);
 
-        // Continue button
-        ImageButton buttonContinue = findViewById(R.id.button_continue);
+        //Set images using Glide
+        //Background
+        ImageView backgroundImage = findViewById(R.id.background);
+        GlideApp.with(this)
+                .load(R.drawable.bg)
+                .error(R.drawable.error)
+                .into(backgroundImage);
+        //Main logo
+        ImageView logoImage = findViewById(R.id.main_logo);
+        GlideApp.with(this)
+                .load(R.drawable.main_logo)
+                .error(R.drawable.error)
+                .into(logoImage);
+        //'Continue' button image
+        ImageView buttonContinue = findViewById(R.id.button_continue);
+        GlideApp.with(this)
+                .load(R.drawable.selector_continue_button)
+                .error(R.drawable.error)
+                .into(buttonContinue);
 
         // Capture button clicks
         buttonContinue.setOnClickListener(new OnClickListener() {

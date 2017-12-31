@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.view.View.OnClickListener;
 
@@ -22,7 +21,7 @@ public class SelectFirstCharacterActivity extends AppCompatActivity implements O
     private static int selectedCharacter1;
 
     //Character image view
-    private ImageView character_image;
+    private ImageView characterImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +33,32 @@ public class SelectFirstCharacterActivity extends AppCompatActivity implements O
         //Set 'activity_select_first_character' as a main design file
         setContentView(R.layout.activity_select_first_character);
 
-        //Character image view
-        character_image = findViewById(R.id.character_image);
+        //Set images using Glide
+        //Background
+        ImageView backgroundImage = findViewById(R.id.background);
+        GlideApp.with(this)
+                .load(R.drawable.bg)
+                .error(R.drawable.error)
+                .into(backgroundImage);
+        //'Previous', 'Select', 'Next' button images
+        ImageView buttonPrev = findViewById(R.id.button_prev);
+        GlideApp.with(this)
+                .load(R.drawable.selector_prev_button)
+                .error(R.drawable.error)
+                .into(buttonPrev);
+        ImageView buttonSelect = findViewById(R.id.button_select);
+        GlideApp.with(this)
+                .load(R.drawable.selector_select_button)
+                .error(R.drawable.error)
+                .into(buttonSelect);
+        ImageView buttonNext = findViewById(R.id.button_next);
+        GlideApp.with(this)
+                .load(R.drawable.selector_next_button)
+                .error(R.drawable.error)
+                .into(buttonNext);
 
-        //Image buttons
-        ImageButton buttonPrev = findViewById(R.id.button_prev);
-        ImageButton buttonNext = findViewById(R.id.button_next);
-        ImageButton buttonSelect = findViewById(R.id.button_select);
+        //Character image view
+        characterImage = findViewById(R.id.character_image);
 
         //Set on click listener events for buttons
         buttonPrev.setOnClickListener(this);
@@ -78,7 +96,7 @@ public class SelectFirstCharacterActivity extends AppCompatActivity implements O
 
         //Show correct character image
         int characterId = getResources().getIdentifier("character_" + lastCharacterCounter, "drawable", getPackageName());
-        character_image.setImageResource(characterId);
+        characterImage.setImageResource(characterId);
     }
 
     @Override
@@ -160,7 +178,7 @@ public class SelectFirstCharacterActivity extends AppCompatActivity implements O
         //Apply transition into main image view & start animation
         TransitionDrawable mainImageTransition = new TransitionDrawable(backgrounds);
 
-        character_image.setImageDrawable(mainImageTransition);
+        characterImage.setImageDrawable(mainImageTransition);
 
         mainImageTransition.setCrossFadeEnabled(true);
         mainImageTransition.startTransition(500);

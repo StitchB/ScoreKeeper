@@ -31,8 +31,7 @@
         android:layout_marginBottom="@dimen/standardSpacing"
         android:layout_marginStart="@dimen/standardSpacing"
         android:layout_marginTop="@dimen/standardSpacing"
-        android:contentDescription="@string/prev_character_button"
-        android:src="@drawable/selector_prev_button" />
+        android:contentDescription="@string/prev_character_button" />
 
     <!-- Button for selecting first fighter -->
     <ImageButton
@@ -42,8 +41,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/standardSpacing"
         android:layout_marginTop="@dimen/standardSpacing"
-        android:contentDescription="@string/select_character_button"
-        android:src="@drawable/selector_select_button" />
+        android:contentDescription="@string/select_character_button" />
 
     <!-- Button for changing to next character -->
     <ImageButton
@@ -54,6 +52,5 @@
         android:layout_marginBottom="@dimen/standardSpacing"
         android:layout_marginEnd="@dimen/standardSpacing"
         android:layout_marginTop="@dimen/standardSpacing"
-        android:contentDescription="@string/next_character_button"
-        android:src="@drawable/selector_next_button" />
+        android:contentDescription="@string/next_character_button" />
 </RelativeLayout>

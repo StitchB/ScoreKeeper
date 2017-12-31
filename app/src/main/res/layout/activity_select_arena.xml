@@ -37,8 +37,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginStart="@dimen/standardSpacing"
-        android:contentDescription="@string/prev_arena_button"
-        android:src="@drawable/selector_prev_button" />
+        android:contentDescription="@string/prev_arena_button" />
 
     <!-- Button for selecting the arena -->
     <ImageButton
@@ -46,8 +45,7 @@
         style="@style/ActionButtonWithVerticalMargin"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:contentDescription="@string/select_arena_button"
-        android:src="@drawable/selector_select_button" />
+        android:contentDescription="@string/select_arena_button" />
 
     <!-- Button for changing to next arena -->
     <ImageButton
@@ -56,6 +54,5 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="@dimen/standardSpacing"
-        android:contentDescription="@string/next_arena_button"
-        android:src="@drawable/selector_next_button" />
+        android:contentDescription="@string/next_arena_button" />
 </RelativeLayout>

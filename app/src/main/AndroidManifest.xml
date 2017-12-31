@@ -22,5 +22,8 @@
             android:name=".SelectArenaActivity" />
         <activity
             android:name=".BattleActivity" />
+
+        <meta-data android:name="com.example.android.scorekeeper_theavengers.GlideConfiguration"
+            android:value="AppGlideModule"/>
     </application>
 </manifest>

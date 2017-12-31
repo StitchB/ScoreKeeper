@@ -15,7 +15,7 @@
         android:id="@+id/main_logo"
         style="@style/MainLogo"
         android:contentDescription="@string/main_logo"
-        android:layout_marginTop="@dimen/doubleSpacing"
+        android:layout_marginTop="@dimen/startScreenSpacing"
         android:layout_marginBottom="@dimen/doubleSpacing"
         android:layout_marginLeft="@dimen/standardSpacing"
         android:layout_marginRight="@dimen/standardSpacing"
@@ -29,7 +29,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/doubleSpacing"
         android:paddingTop="@dimen/doubleSpacing"
-        android:contentDescription="@string/continue_button"
-        android:src="@drawable/selector_continue_button" />
+        android:contentDescription="@string/continue_button" />
 
 </RelativeLayout>

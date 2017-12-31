@@ -10,6 +10,7 @@
     <dimen name="doubleSpacing">16dp</dimen>
     <dimen name="tripleSpacing">24dp</dimen>
     <dimen name="quadrupleSpacing">32dp</dimen>
+    <dimen name="startScreenSpacing">80dp</dimen>
     <dimen name="attackButtonHorizontalMargin">16dp</dimen>
 
     <dimen name="selectionHeadingMargin">24dp</dimen>

@@ -11,13 +11,12 @@
     <dimen name="standardSpacing">16dp</dimen>
     <dimen name="doubleSpacing">32dp</dimen>
     <dimen name="tripleSpacing">48dp</dimen>
+    <dimen name="startScreenSpacing">80dp</dimen>
     <dimen name="negativeMargin">-8dp</dimen>
-    <dimen name="largeNegativeMargin">-32dp</dimen>
     <dimen name="attackButtonHorizontalMargin">16dp</dimen>
     <dimen name="fighterImageBottomMargin">32dp</dimen>
 
     <dimen name="selectionHeadingMargin">24dp</dimen>
-    <dimen name="arenaImageMargin">72dp</dimen>
     <dimen name="arenaImageBorderWidth">3dp</dimen>
 
     <dimen name="shadowOffset">6</dimen>

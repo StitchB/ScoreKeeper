@@ -13,13 +13,11 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:scaleType">centerCrop</item>
-        <item name="android:src">@drawable/bg</item>
     </style>
 
     <style name="MainLogo">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:src">@drawable/main_logo</item>
     </style>
 
     <style name="MainHeading">
