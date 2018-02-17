@@ -1,1 +1,1 @@
-Google Developer Challenge Scholarship: Android Basics - Score Counter App (Project #2)
+Google Developer Challenge Scholarship: Android Basics - ScoreKeeper App (Project #2)
